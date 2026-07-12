@@ -5,20 +5,17 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mapping Tech Skill Demands Across Southeast Asia | Yamin Thazin Oo</title>
 
-<!-- SEO -->
 <meta name="description" content="An LLM-based analysis of 3,247 LinkedIn job advertisements across Singapore, Thailand, and Myanmar, comparing employer skill demands for five digital-economy roles. Capstone thesis by Yamin Thazin Oo (2025).">
 <meta name="author" content="Yamin Thazin Oo">
 <meta name="keywords" content="digital economy, skill demands, job advertisements, LLM extraction, Southeast Asia, workforce development, Singapore, Thailand, Myanmar">
 <link rel="canonical" href="https://yamin-tzo.github.io/sea-tech-skills-thesis/">
 
-<!-- Open Graph / social -->
 <meta property="og:type" content="article">
 <meta property="og:title" content="Mapping Tech Skill Demands Across Southeast Asia">
 <meta property="og:description" content="An LLM-based analysis of tech job advertisements in Singapore, Thailand, and Myanmar. Capstone thesis, 2025.">
 <meta property="og:url" content="https://yamin-tzo.github.io/sea-tech-skills-thesis/">
 <meta name="twitter:card" content="summary">
 
-<!-- Highwire / Google Scholar citation metadata -->
 <meta name="citation_title" content="Mapping Tech Skill Demands Across Southeast Asia: An LLM-Based Analysis of Job Advertisements in Singapore, Thailand, and Myanmar">
 <meta name="citation_author" content="Oo, Yamin Thazin">
 <meta name="citation_publication_date" content="2025/12">
@@ -33,73 +30,80 @@
   :root{
     --bg:#f7f8fa; --panel:#ffffff; --ink:#1a1f2b; --muted:#5a6473;
     --line:#e5e8ee; --accent:#2f5bd0; --accent-ink:#ffffff; --tag-bg:#eef2fb; --tag-ink:#2f5bd0;
+    --th-bg:#f1f4f9; --stripe:#fafbfd;
     --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
   }
   @media (prefers-color-scheme: dark){
     :root{
       --bg:#0e1117; --panel:#161b22; --ink:#e6edf3; --muted:#9aa4b2;
       --line:#272e39; --accent:#6f9bff; --accent-ink:#0e1117; --tag-bg:#1b2333; --tag-ink:#9cc0ff;
+      --th-bg:#1b2230; --stripe:#12161d;
       --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
     }
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--bg); color:var(--ink);
-    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.7 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;}
   a{color:var(--accent)}
-  .wrap{max-width:860px; margin:0 auto; padding:clamp(20px,5vw,56px) clamp(16px,4vw,32px)}
+  .wrap{max-width:840px; margin:0 auto; padding:clamp(20px,5vw,56px) clamp(16px,4vw,32px)}
 
-  /* Header */
   .eyebrow{font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 12px}
-  h1{font-size:clamp(1.6rem,4.4vw,2.5rem); line-height:1.18; margin:0 0 18px; letter-spacing:-.01em; font-weight:700}
-  .byline{color:var(--muted); font-size:.98rem; margin:0 0 4px}
-  .byline strong{color:var(--ink); font-weight:600}
+  h1.doc-title{font-size:clamp(1.6rem,4.4vw,2.5rem); line-height:1.18; margin:0 0 18px; letter-spacing:-.01em; font-weight:700}
+  .subtitle{font-size:1.05rem; color:var(--ink); margin:0 0 4px}
   .meta-grid{display:flex; flex-wrap:wrap; gap:8px 22px; margin:18px 0 4px; color:var(--muted); font-size:.9rem}
   .meta-grid span strong{color:var(--ink); font-weight:600}
 
-  /* Buttons */
   .actions{display:flex; flex-wrap:wrap; gap:12px; margin:28px 0 8px}
-  .btn{
-    display:inline-flex; align-items:center; gap:9px; padding:12px 20px; border-radius:10px;
+  .btn{display:inline-flex; align-items:center; gap:9px; padding:12px 20px; border-radius:10px;
     font-weight:600; font-size:.95rem; text-decoration:none; border:1px solid var(--line); cursor:pointer;
-    transition:transform .06s ease, box-shadow .15s ease, background .15s ease;
-  }
+    transition:transform .06s ease, box-shadow .15s ease;}
   .btn:active{transform:translateY(1px)}
   .btn-primary{background:var(--accent); color:var(--accent-ink); border-color:transparent; box-shadow:var(--shadow)}
   .btn-ghost{background:var(--panel); color:var(--ink)}
   .btn svg{width:18px;height:18px}
 
-  /* Cards */
-  section.card{
-    background:var(--panel); border:1px solid var(--line); border-radius:14px;
-    padding:clamp(20px,3.5vw,32px); margin:26px 0; box-shadow:var(--shadow);
-  }
-  h2{font-size:1.15rem; margin:0 0 14px; letter-spacing:-.01em}
-  .abstract p{margin:0 0 14px}
-  .abstract p:last-child{margin-bottom:0}
+  .card{background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:clamp(18px,3vw,28px); margin:26px 0; box-shadow:var(--shadow)}
+  .card > h2.card-h{font-size:1.1rem; margin:0 0 12px}
 
-  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
-  .tag{background:var(--tag-bg); color:var(--tag-ink); font-size:.82rem; padding:5px 11px; border-radius:999px; font-weight:500}
+  /* Table of contents */
+  nav.toc ul{list-style:none; margin:0; padding:0; columns:2; column-gap:34px}
+  @media (max-width:640px){ nav.toc ul{columns:1} }
+  nav.toc li{margin:0 0 6px; font-size:.9rem; break-inside:avoid}
+  nav.toc li a{text-decoration:none; color:var(--ink)}
+  nav.toc li a:hover{color:var(--accent); text-decoration:underline}
+  nav.toc li.lvl0{font-weight:650; margin-top:10px}
+  nav.toc li.lvl0:first-child{margin-top:0}
+  nav.toc li.lvl1{padding-left:14px; color:var(--muted)}
+  nav.toc li.lvl1 a{color:var(--muted)}
+  nav.toc li.lvl2{padding-left:28px; color:var(--muted); font-size:.85rem}
+  nav.toc li.lvl2 a{color:var(--muted)}
 
-  /* TOC */
-  .toc{columns:2; column-gap:36px}
-  @media (max-width:620px){ .toc{columns:1} }
-  .toc ol{list-style:none; margin:0; padding:0; break-inside:avoid}
-  .toc li{margin:0 0 7px; font-size:.92rem; break-inside:avoid}
-  .toc .chap{font-weight:600; margin-top:14px}
-  .toc .chap:first-child{margin-top:0}
-  .toc .sub{padding-left:16px; color:var(--muted)}
+  /* Article content */
+  article{margin-top:10px}
+  article h1,article h2,article h3,article h4{line-height:1.25; letter-spacing:-.01em; scroll-margin-top:16px}
+  article h1{font-size:1.7rem; margin:2.2em 0 .6em; padding-bottom:.3em; border-bottom:1px solid var(--line)}
+  article h2{font-size:1.35rem; margin:2em 0 .5em}
+  article h3{font-size:1.12rem; margin:1.6em 0 .4em}
+  article h4{font-size:1rem; margin:1.4em 0 .3em; color:var(--muted)}
+  article p{margin:0 0 1em}
+  article ul,article ol{margin:0 0 1em; padding-left:1.4em}
+  article li{margin:.25em 0}
+  article a{word-break:break-word}
+  article img{max-width:100%; height:auto; display:block; margin:1.4em auto; border:1px solid var(--line); border-radius:8px; background:#fff}
+  article strong{font-weight:650}
 
-  /* PDF viewer */
-  .viewer{border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); background:var(--panel)}
-  .viewer iframe{display:block; width:100%; height:82vh; min-height:520px; border:0; background:#f0f0f0}
-  .viewer-note{font-size:.85rem; color:var(--muted); margin:12px 2px 0; text-align:center}
+  .table-wrap{overflow-x:auto; margin:1.4em 0; border:1px solid var(--line); border-radius:10px}
+  article table{border-collapse:collapse; width:100%; font-size:.88rem; min-width:480px}
+  article th,article td{border:1px solid var(--line); padding:8px 11px; text-align:left; vertical-align:top}
+  article tr:first-child td,article th{background:var(--th-bg); font-weight:600}
+  article tbody tr:nth-child(even) td{background:var(--stripe)}
 
-  footer{color:var(--muted); font-size:.85rem; text-align:center; margin:40px 0 8px; line-height:1.7}
-  hr.sep{border:0; border-top:1px solid var(--line); margin:8px 0 0}
+  hr{border:0; border-top:1px solid var(--line); margin:2.2em 0}
+
+  footer{color:var(--muted); font-size:.85rem; text-align:center; margin:48px 0 8px; line-height:1.7}
 </style>
 </head>
 <body>
@@ -107,77 +111,3964 @@
 
   <header>
     <p class="eyebrow">Capstone Research Thesis · 2025</p>
-    <h1>Mapping Tech Skill Demands Across Southeast Asia</h1>
-    <p class="byline" style="font-size:1.05rem; color:var(--ink)">An LLM-Based Analysis of Job Advertisements in Singapore, Thailand, and Myanmar</p>
+    <h1 class="doc-title">Mapping Tech Skill Demands Across Southeast Asia</h1>
+    <p class="subtitle">An LLM-Based Analysis of Job Advertisements in Singapore, Thailand, and Myanmar</p>
     <div class="meta-grid">
       <span><strong>Author:</strong> Yamin Thazin Oo</span>
       <span><strong>Supervisor:</strong> Dr. Myo Thida</span>
       <span><strong>Submitted:</strong> December 2025</span>
     </div>
-
     <div class="actions">
       <a class="btn btn-primary" href="Mapping-Tech-Skill-Demands-Across-SEA.pdf" download>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-        Download PDF (62 pp, 2.1 MB)
+        Download PDF
       </a>
       <a class="btn btn-ghost" href="Mapping-Tech-Skill-Demands-Across-SEA.pdf" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-        Open in new tab
+        Open PDF in new tab
       </a>
     </div>
   </header>
 
-  <section class="card abstract">
-    <h2>Abstract</h2>
-    <p>This study examines skill demands across Southeast Asian tech labor markets at varying stages of digital economy maturity. Collecting 3,247 job advertisements from LinkedIn across Singapore (mature), Thailand (emerging), and Myanmar (developing), the research employs LLM-based skill extraction and analyzes a high-confidence filtered sample of 967 job advertisements to compare employer requirements for five digital economy roles: Product Management, UI/UX Design, Data Analysis/Science, Business Development, and Digital Marketing.</p>
-    <p>Findings reveal high regional consistency (97% similarity between Singapore and Thailand), with Myanmar showing meaningful but lower alignment (84% with Singapore). While core skill demands are fundamentally similar across markets, Myanmar exhibits 20% lower skill intensity per job and significant gaps in emerging AI/ML competencies. The study contributes a validated dual-taxonomy approach combining O*NET and the Singapore Skills Framework, demonstrating that regional taxonomies better capture emerging tech roles than legacy international standards. Results inform workforce development initiatives and regional skills recognition frameworks for emerging digital economies.</p>
-    <h2 style="margin-top:24px">Keywords</h2>
-    <div class="tags">
-      <span class="tag">digital economy</span>
-      <span class="tag">skill demands</span>
-      <span class="tag">job advertisements</span>
-      <span class="tag">LLM extraction</span>
-      <span class="tag">Southeast Asia</span>
-      <span class="tag">workforce development</span>
-      <span class="tag">Singapore</span>
-      <span class="tag">Thailand</span>
-      <span class="tag">Myanmar</span>
-    </div>
-  </section>
+  <nav class="toc card" aria-label="Table of contents">
+    <h2 class="card-h">Contents</h2>
+    <ul>
+<li class="lvl0"><a href="#acknowledgments">Acknowledgments</a></li>
+<li class="lvl0"><a href="#list-of-tables">List of Tables</a></li>
+<li class="lvl0"><a href="#list-of-figures">List of Figures</a></li>
+<li class="lvl0"><a href="#list-of-abbreviations">List of Abbreviations</a></li>
+<li class="lvl0"><a href="#ai-usage-disclaimer">AI Usage Disclaimer</a></li>
+<li class="lvl0"><a href="#abstract">Abstract</a></li>
+<li class="lvl0"><a href="#chapter-1-introduction">Chapter 1: Introduction</a></li>
+<li class="lvl1"><a href="#1-1-background-and-context">1.1 Background and Context</a></li>
+<li class="lvl1"><a href="#1-2-problem-statement">1.2 Problem Statement</a></li>
+<li class="lvl1"><a href="#1-3-rationale">1.3 Rationale</a></li>
+<li class="lvl1"><a href="#1-4-research-aim-and-questions">1.4 Research Aim and Questions</a></li>
+<li class="lvl1"><a href="#1-5-research-hypotheses">1.5 Research Hypotheses</a></li>
+<li class="lvl1"><a href="#1-6-scope-and-limitations">1.6 Scope and Limitations</a></li>
+<li class="lvl1"><a href="#1-7-significance-of-the-study">1.7 Significance of the Study</a></li>
+<li class="lvl0"><a href="#chapter-2-literature-review">Chapter 2: Literature Review</a></li>
+<li class="lvl1"><a href="#2-1-the-digital-economy-and-tech-role-competencies">2.1 The Digital Economy and Tech Role Competencies</a></li>
+<li class="lvl2"><a href="#2-1-1-theoretical-foundations">2.1.1 Theoretical Foundations</a></li>
+<li class="lvl2"><a href="#2-1-2-occupational-taxonomies-and-skill-frameworks">2.1.2 Occupational Taxonomies and Skill Frameworks</a></li>
+<li class="lvl2"><a href="#2-1-3-evolution-of-digital-economy-roles">2.1.3 Evolution of Digital Economy Roles</a></li>
+<li class="lvl1"><a href="#2-2-methodological-approaches-to-skill-demand-analysis">2.2 Methodological Approaches to Skill Demand Analysis</a></li>
+<li class="lvl1"><a href="#2-3-southeast-asian-labor-markets">2.3 Southeast Asian Labor Markets</a></li>
+<li class="lvl2"><a href="#2-3-1-regional-skills-frameworks-and-labor-mobility">2.3.1 Regional Skills Frameworks and Labor Mobility</a></li>
+<li class="lvl1"><a href="#2-4-research-gap">2.4 Research Gap</a></li>
+<li class="lvl0"><a href="#chapter-3-theoretical-and-conceptual-framework">Chapter 3: Theoretical and Conceptual Framework</a></li>
+<li class="lvl1"><a href="#3-1-theoretical-foundation">3.1 Theoretical Foundation</a></li>
+<li class="lvl1"><a href="#3-2-conceptual-framework">3.2 Conceptual Framework</a></li>
+<li class="lvl2"><a href="#3-2-1-skill-demand-formation-model">3.2.1 Skill Demand Formation Model</a></li>
+<li class="lvl2"><a href="#3-2-2-dual-taxonomy-approach">3.2.2 Dual-Taxonomy Approach</a></li>
+<li class="lvl2"><a href="#3-2-3-cross-market-comparison-dimensions">3.2.3 Cross-Market Comparison Dimensions</a></li>
+<li class="lvl1"><a href="#3-3-application-to-research-questions">3.3 Application to Research Questions</a></li>
+<li class="lvl0"><a href="#chapter-4-research-methodology">Chapter 4: Research Methodology</a></li>
+<li class="lvl1"><a href="#4-1-research-philosophy-and-approach">4.1 Research Philosophy and Approach</a></li>
+<li class="lvl1"><a href="#4-2-research-design">4.2 Research Design</a></li>
+<li class="lvl1"><a href="#4-3-data-collection">4.3 Data Collection</a></li>
+<li class="lvl1"><a href="#4-4-data-processing-pipeline">4.4 Data Processing Pipeline</a></li>
+<li class="lvl1"><a href="#4-5-role-classification-and-taxonomy-mapping">4.5 Role Classification and Taxonomy Mapping</a></li>
+<li class="lvl1"><a href="#4-6-skill-extraction-methodology">4.6 Skill Extraction Methodology</a></li>
+<li class="lvl1"><a href="#4-7-analytical-procedures">4.7 Analytical Procedures</a></li>
+<li class="lvl1"><a href="#4-8-quality-assurance">4.8 Quality Assurance</a></li>
+<li class="lvl1"><a href="#4-9-ethical-considerations">4.9 Ethical Considerations</a></li>
+<li class="lvl1"><a href="#4-10-methodological-limitations">4.10 Methodological Limitations</a></li>
+<li class="lvl0"><a href="#chapter-5-data-presentation-and-analysis">Chapter 5: Data Presentation and Analysis</a></li>
+<li class="lvl1"><a href="#5-1-dataset-overview">5.1 Dataset Overview</a></li>
+<li class="lvl1"><a href="#5-2-sub-research-question-1-skill-demands-and-cross-market-c">5.2 Sub-Research Question 1: Skill Demands and Cross-Market Consistency</a></li>
+<li class="lvl2"><a href="#5-2-1-universal-foundation-skills">5.2.1 Universal Foundation Skills</a></li>
+<li class="lvl2"><a href="#5-2-2-top-10-skills-by-country">5.2.2 Top 10 Skills by Country</a></li>
+<li class="lvl2"><a href="#5-2-3-skill-category-distribution">5.2.3 Skill Category Distribution</a></li>
+<li class="lvl2"><a href="#5-2-4-role-specific-skill-profiles-singapore-vs-thailand">5.2.4 Role-Specific Skill Profiles (Singapore vs Thailand)</a></li>
+<li class="lvl2"><a href="#5-2-5-cross-market-role-consistency">5.2.5 Cross-Market Role Consistency</a></li>
+<li class="lvl1"><a href="#5-3-sub-research-question-2-myanmar-skill-gaps">5.3 Sub-Research Question 2: Myanmar Skill Gaps</a></li>
+<li class="lvl2"><a href="#5-3-1-market-similarity">5.3.1 Market Similarity</a></li>
+<li class="lvl2"><a href="#5-3-2-coverage-gap-analysis">5.3.2 Coverage Gap Analysis</a></li>
+<li class="lvl2"><a href="#5-3-3-skill-intensity-gap">5.3.3 Skill Intensity Gap</a></li>
+<li class="lvl2"><a href="#5-3-4-ai-ml-emerging-skills-gap">5.3.4 AI/ML Emerging Skills Gap</a></li>
+<li class="lvl2"><a href="#5-3-5-myanmar-relative-strengths">5.3.5 Myanmar Relative Strengths</a></li>
+<li class="lvl2"><a href="#5-3-6-myanmar-business-development-deep-dive-n-27">5.3.6 Myanmar Business Development Deep Dive (n=27)</a></li>
+<li class="lvl1"><a href="#5-4-taxonomy-validation-findings-objective-3">5.4 Taxonomy Validation Findings (Objective 3)</a></li>
+<li class="lvl1"><a href="#5-5-emerging-skills-analysis-objective-4">5.5 Emerging Skills Analysis (Objective 4)</a></li>
+<li class="lvl1"><a href="#5-6-summary-of-findings">5.6 Summary of Findings</a></li>
+<li class="lvl0"><a href="#chapter-6-discussion-and-conclusion">Chapter 6: Discussion and Conclusion</a></li>
+<li class="lvl1"><a href="#6-1-discussion-of-findings">6.1 Discussion of Findings</a></li>
+<li class="lvl2"><a href="#6-1-1-hypothesis-evaluation">6.1.1 Hypothesis Evaluation</a></li>
+<li class="lvl2"><a href="#6-1-2-addressing-the-research-questions">6.1.2 Addressing the Research Questions</a></li>
+<li class="lvl2"><a href="#6-1-3-findings-in-relation-to-existing-literature">6.1.3 Findings in Relation to Existing Literature</a></li>
+<li class="lvl2"><a href="#6-1-4-unexpected-findings">6.1.4 Unexpected Findings</a></li>
+<li class="lvl1"><a href="#6-2-theoretical-implications">6.2 Theoretical Implications</a></li>
+<li class="lvl1"><a href="#6-3-practical-implications">6.3 Practical Implications</a></li>
+<li class="lvl2"><a href="#6-3-1-for-workforce-development-programs">6.3.1 For Workforce Development Programs</a></li>
+<li class="lvl2"><a href="#6-3-2-for-regional-labor-mobility-initiatives">6.3.2 For Regional Labor Mobility Initiatives</a></li>
+<li class="lvl2"><a href="#6-3-3-for-individual-workers">6.3.3 For Individual Workers</a></li>
+<li class="lvl2"><a href="#6-3-4-for-myanmar-specific-development">6.3.4 For Myanmar-Specific Development</a></li>
+<li class="lvl2"><a href="#6-3-5-for-taxonomy-and-framework-developers">6.3.5 For Taxonomy and Framework Developers</a></li>
+<li class="lvl1"><a href="#6-4-reflections">6.4 Reflections</a></li>
+<li class="lvl2"><a href="#6-4-1-scope-adjustment">6.4.1 Scope Adjustment</a></li>
+<li class="lvl2"><a href="#6-4-2-iterative-role-mapping">6.4.2 Iterative Role Mapping</a></li>
+<li class="lvl2"><a href="#6-4-3-methodology-restart">6.4.3 Methodology Restart</a></li>
+<li class="lvl2"><a href="#6-4-4-broader-implications">6.4.4 Broader Implications</a></li>
+<li class="lvl1"><a href="#6-5-limitations">6.5 Limitations</a></li>
+<li class="lvl2"><a href="#6-5-1-sample-limitations">6.5.1 Sample Limitations</a></li>
+<li class="lvl2"><a href="#6-5-2-data-source-limitations">6.5.2 Data Source Limitations</a></li>
+<li class="lvl2"><a href="#6-5-3-methodological-limitations">6.5.3 Methodological Limitations</a></li>
+<li class="lvl2"><a href="#6-5-4-analytical-limitations">6.5.4 Analytical Limitations</a></li>
+<li class="lvl1"><a href="#6-6-future-research-recommendations">6.6 Future Research Recommendations</a></li>
+<li class="lvl1"><a href="#6-7-conclusion">6.7 Conclusion</a></li>
+<li class="lvl0"><a href="#references">References</a></li>
+    </ul>
+  </nav>
 
-  <section class="card">
-    <h2>Table of Contents</h2>
-    <div class="toc">
-      <ol>
-        <li class="chap">1 · Introduction</li>
-        <li class="sub">Background · Problem · Rationale · Aims &amp; Questions · Hypotheses · Scope · Significance</li>
-        <li class="chap">2 · Literature Review</li>
-        <li class="sub">Digital economy &amp; tech competencies · Methodological approaches · SEA labor markets · Research gap</li>
-        <li class="chap">3 · Theoretical &amp; Conceptual Framework</li>
-        <li class="sub">Skill demand formation model · Dual-taxonomy approach · Cross-market comparison</li>
-        <li class="chap">4 · Research Methodology</li>
-        <li class="sub">Design · Data collection · Processing pipeline · Role classification · Skill extraction · QA · Ethics</li>
-        <li class="chap">5 · Data Presentation &amp; Analysis</li>
-        <li class="sub">Cross-market skill demands · Myanmar skill gaps · Taxonomy validation · Emerging skills</li>
-        <li class="chap">6 · Discussion &amp; Conclusion</li>
-        <li class="sub">Hypothesis evaluation · Theoretical &amp; practical implications · Limitations · Future research</li>
-        <li class="chap">References</li>
-        <li class="chap">Appendix: 17 Tables · 12 Figures</li>
-      </ol>
-    </div>
-  </section>
+  <article>
 
-  <section>
-    <h2 style="margin-left:2px">Read the full thesis</h2>
-    <div class="viewer">
-      <iframe src="Mapping-Tech-Skill-Demands-Across-SEA.pdf#view=FitH" title="Full thesis PDF" loading="lazy"></iframe>
-    </div>
-    <p class="viewer-note">If the embedded viewer doesn't load on your device (common on mobile), use <strong>Download PDF</strong> or <strong>Open in new tab</strong> above.</p>
-  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h2 id="acknowledgments">
+<strong>Acknowledgments</strong>
+</h2>
+<p>
+<span>I extend sincere gratitude to my supervisor, Dr. Myo Thida, for her guidance, patience, encouragement, and invaluable feedback throughout this research. </span>
+</p>
+<p>
+<span>I acknowledge Kaung Min Khant for technical assistance with API integration and code review. </span>
+</p>
+<p>
+<span>Finally, I thank my family and friends for their support.</span>
+</p>
+
+
+
+
+
+
+
+
+<h2 id="list-of-tables">
+<strong>List of Tables</strong>
+</h2>
+<ul>
+<li>
+<span>Table 4.1: Country Selection and Market Context</span>
+</li>
+<li>
+<span>Table 4.2: Target Roles and Descriptions</span>
+</li>
+<li>
+<span>Table 4.3: Taxonomy Alignment Comparison</span>
+</li>
+<li>
+<span>Table 4.4: Skill Extraction Method Comparison</span>
+</li>
+<li>
+<span>Table 4.5: Gap Analysis Metrics</span>
+</li>
+<li>
+<span>Table 5.1: Sample Distribution by Role</span>
+</li>
+<li>
+<span>Table 5.2: Universal Foundation Skills</span>
+</li>
+<li>
+<span>Table 5.3: Business Development Role Profile (Singapore vs Thailand)</span>
+</li>
+<li>
+<span>Table 5.4: Data Analysis/Science Role Profile (Singapore vs Thailand)</span>
+</li>
+<li>
+<span>Table 5.5: Digital Marketing Role Profile (Singapore vs Thailand)</span>
+</li>
+<li>
+<span>Table 5.6: Product Management Role Profile (Singapore vs Thailand)</span>
+</li>
+<li>
+<span>Table 5.7: UI/UX Design Role Profile (Singapore vs Thailand)</span>
+</li>
+<li>
+<span>Table 5.8: Coverage Gap Analysis</span>
+</li>
+<li>
+<span>Table 5.9: Myanmar Relative Strengths</span>
+</li>
+<li>
+<span>Table 5.10: Myanmar Business Development Deep Dive</span>
+</li>
+<li>
+<span>Table 6.1: Recommended Curriculum Components by Priority</span>
+</li>
+</ul>
+<hr/>
+
+<h2 id="list-of-figures">
+<strong>List of Figures</strong>
+</h2>
+<ul>
+<li>
+<span>Figure 4.1: Raw Data Collection by Role and Country</span>
+</li>
+<li>
+<span>Figure 4.2: Data Processing Pipeline</span>
+</li>
+<li>
+<span>Figure 5.1: Average Skills per Job by Country</span>
+</li>
+<li>
+<span>Figure 5.2: Top 10 Skills by Country</span>
+</li>
+<li>
+<span>Figure 5.3: Skill Category Distribution by Country</span>
+</li>
+<li>
+<span>Figure 5.4: Role-Specific Skill Profiles (Singapore vs Thailand)</span>
+</li>
+<li>
+<span>Figure 5.5: Cross-Market Role Consistency (Cosine Similarity)</span>
+</li>
+<li>
+<span>Figure 5.6: Market Similarity Scores</span>
+</li>
+<li>
+<span>Figure 5.7: Skill Intensity Comparison by Country</span>
+</li>
+<li>
+<span>Figure 5.8: AI/ML Emerging Skills Gap by Country</span>
+</li>
+<li>
+<span>Figure 5.9: Taxonomy Alignment Comparison (O*NET vs Singapore Skills Framework)</span>
+</li>
+<li>
+<span>Figure 5.10: Top Non-Taxonomy Emerging Skills</span>
+</li>
+</ul>
+<h2 id="list-of-abbreviations">
+<strong>List of Abbreviations</strong>
+</h2>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Abbreviation</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Full Term</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>AI</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Artificial Intelligence</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>ASEAN</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Association of Southeast Asian Nations</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>ESCO</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>European Skills, Competences, Qualifications and Occupations</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>LLM</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Large Language Model</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>O*NET</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Occupational Information Network</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>SBTC</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Skill-Biased Technological Change</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>SSF</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Singapore Skills Framework</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>WEF</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>World Economic Forum</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+
+
+
+<h2 id="ai-usage-disclaimer">
+<strong>AI Usage Disclaimer</strong>
+</h2>
+<p>
+<span>This research employed AI tools to enhance research efficiency while maintaining academic rigor and researcher accountability:</span>
+</p>
+<p>
+<span>Skill Extraction: Google Gemini 2.5 Flash was used for automated skill extraction from job advertisements, configured with temperature=0 for deterministic outputs and validated through human review.</span>
+</p>
+<p>
+<span>Data Processing and Analysis Scripts: Anthropic Claude (Sonnet 3.5 and Opus 4.5) assisted in developing Python scripts for data processing, statistical analysis, and data visualization, with continuous human oversight and code review.</span>
+</p>
+<p>
+<span>Research Design and Interpretation: The author maintained full responsibility for all research design decisions, theoretical framing, data interpretation, and conclusions. All AI-generated outputs were critically reviewed, validated, and modified by the researcher.</span>
+</p>
+<p>
+<span>For detailed methodology on AI tool usage, see Section 4.9 (Ethical Considerations).</span>
+</p>
+
+
+<h2 id="abstract">
+<strong>Abstract</strong>
+</h2>
+<p>
+<span>This study examines skill demands across Southeast Asian tech labor markets at varying stages of digital economy maturity. Collecting 3,247 job advertisements from LinkedIn across Singapore (mature), Thailand (emerging), and Myanmar (developing), the research employs LLM-based skill extraction and analyzes a high-confidence filtered sample of 967 job advertisements to compare employer requirements for five digital economy roles: Product Management, UI/UX Design, Data Analysis/Science, Business Development, and Digital Marketing.</span>
+</p>
+<p>
+<span>Findings reveal high regional consistency (97% similarity between Singapore and Thailand), with Myanmar showing meaningful but lower alignment (84% with Singapore). While core skill demands are fundamentally similar across markets, Myanmar exhibits 20% lower skill intensity per job and significant gaps in emerging AI/ML competencies. The study contributes a validated dual-taxonomy approach combining O*NET and Singapore Skills Framework, demonstrating that regional taxonomies better capture emerging tech roles than legacy international standards. Results inform workforce development initiatives and regional skills recognition frameworks for emerging digital economies.</span>
+</p>
+<p>
+<strong>Keywords:</strong>
+<span> digital economy, skill demands, job advertisements, LLM extraction, Southeast Asia, workforce development, Singapore, Thailand, Myanmar</span>
+</p>
+
+
+
+<h2 id="chapter-1-introduction">
+<strong>Chapter 1: Introduction</strong>
+</h2>
+<h3 id="1-1-background-and-context">
+<strong>1.1 Background and Context</strong>
+</h3>
+<p>
+<span>Southeast Asia's digital economy reached $218 billion in gross merchandise value in 2023 and is projected to grow to $600 billion by 2030 (Google, Temasek, &amp; Bain, 2023). This positions Southeast Asia as one of the world's most dynamic digital markets, yet the region faces significant workforce development challenges.</span>
+</p>
+<p>
+<span>The COVID-19 pandemic exacerbated existing labor market pressures. Southeast Asian regional growth decreased by 2.89% during the pandemic (Cambodian Parliamentarians Institute for Asia, 2024), yet the technology sector demonstrated remarkable resilience, with tech recruiting remaining strong (JAC Group, 2024). This divergence highlighted both the strategic importance of the digital economy and the urgent need for workers with appropriate skills.</span>
+</p>
+<p>
+<span>A significant shift in hiring practices has accompanied these changes. According to LinkedIn's Future of Recruiting report, 74% of Southeast Asian recruiting professionals now prioritize skills-based hiring over credential-based approaches, expected to reach 80% within 18 months (LinkedIn, 2023).</span>
+</p>
+<p>
+<span>The variation in digital economy maturity creates a complex landscape:</span>
+</p>
+<p>
+<strong>Singapore</strong>
+<span> has established itself as a regional technology hub with comprehensive digital infrastructure, hosting regional headquarters for major tech companies and maintaining well-developed skills frameworks.</span>
+</p>
+<p>
+<strong>Thailand</strong>
+<span> represents an emerging digital economy with government initiatives (Thailand 4.0, Eastern Economic Corridor) aimed at accelerating digital transformation and expanding tech sector employment.</span>
+</p>
+<p>
+<strong>Myanmar</strong>
+<span> operates at an early stage of digital economy development. Following the 2021 military coup, Myanmar experienced a sharp decline in foreign investment,39 of 52 foreign-investing countries exited by late 2022 (Radio Free Asia, 2024). The ILO estimates approximately 1.1 million job losses resulted (ILO, 2022). The International Organization for Migration documents approximately 22,000 Myanmar youth migrating to Thailand monthly (IOM, 2024), facing language barriers, work authorization challenges, and limited pathways to formal digital economy employment.</span>
+</p>
+<h3 id="1-2-problem-statement">
+<strong>1.2 Problem Statement</strong>
+</h3>
+<p>
+<span>The core problem is the absence of systematic, evidence-based understanding of how employer skill demands for digital economy roles differ across Southeast Asian markets at varying stages of development. This creates multiple challenges:</span>
+</p>
+<ol>
+<li>
+<strong>Workforce development programs</strong>
+<span> lack empirical benchmarks for curricula design</span>
+</li>
+<li>
+<strong>Regional labor mobility initiatives</strong>
+<span> lack granular skill comparisons for qualifications recognition (ASEAN Qualifications Reference Framework exists in principle but lacks role-specific data)</span>
+</li>
+<li>
+<strong>Individual workers</strong>
+<span> lack clear guidance on skill prioritization</span>
+</li>
+<li>
+<strong>Existing taxonomies</strong>
+<span> (O*NET, ESCO) may not adequately capture emerging digital economy roles like Product Management and UI/UX Design</span>
+</li>
+</ol>
+<h3 id="1-3-rationale">
+<strong>1.3 Rationale</strong>
+</h3>
+<p>
+<strong>Academic Justification:</strong>
+<span> Research on digital skill demands is heavily weighted toward developed economies (McGuinness et al., 2017). Myanmar's digital labor market is particularly understudied, with minimal systematic research on tech skill demands.</span>
+</p>
+<p>
+<strong>Practical Urgency:</strong>
+<span> The combination of rapid digital economy growth, skills-first hiring trends, and significant workforce displacement creates immediate practical needs for workers, educators, policymakers, and employers.</span>
+</p>
+<p>
+<strong>Methodological Innovation:</strong>
+<span> </span>
+<span>Traditional approaches rely on manual coding or keyword extraction, limiting scale and consistency. Thida (2023) demonstrated that LLMs outperform rule-based methods for skill extraction, particularly for contextually implied skills. Johary et al. (2025) proved the feasibility of mapping LLM-extracted skills to established taxonomies at scale. This study extends their work by: </span>
+</p>
+<ol>
+<li>
+<span>Focusing on five digital economy roles central to regional tech sector growth</span>
+</li>
+<li>
+<span>Implementing a dual-taxonomy framework combining O*NET with the Singapore Skills Framework, and </span>
+</li>
+<li>
+<span>Enabling cross-country comparison across Singapore, Thailand, and Myanmar.</span>
+</li>
+</ol>
+<p>
+<strong>Framework Development:</strong>
+<span> Existing skill taxonomies have not been systematically validated for Southeast Asian digital economy roles.</span>
+</p>
+<h3 id="1-4-research-aim-and-questions">
+<strong>1.4 Research Aim and Questions</strong>
+</h3>
+<p>
+<strong>Aim:</strong>
+<span> Systematically analyze and compare skill demand trends for key tech roles across Southeast Asian markets at varying stages of maturity, benchmarking emerging countries' skill profiles against regional standards.</span>
+</p>
+<p>
+<strong>Specific Objectives:</strong>
+</p>
+<ol>
+<li>
+<span>Identify and compare skills most frequently demanded for five key digital economy roles across three markets</span>
+</li>
+<li>
+<span>Examine how skill demand profiles differ between developing, emerging, and mature digital economies</span>
+</li>
+<li>
+<span>Validate existing occupational taxonomies for Southeast Asian digital economy roles</span>
+</li>
+<li>
+<span>Identify emerging skills not captured by existing taxonomies</span>
+</li>
+<li>
+<span>Provide evidence-based recommendations for workforce development initiatives</span>
+</li>
+</ol>
+<p>
+<strong>Main Research Question:</strong>
+<span> What skills do employers demand for digital economy roles in Singapore, Thailand, and Myanmar, and where do gaps exist?</span>
+</p>
+<p>
+<strong>Sub-Research Questions:</strong>
+</p>
+<ol>
+<li>
+<span>What skills do Singapore and Thailand employers demand for each digital economy role, and how consistent are these demands?</span>
+</li>
+<li>
+<span>What skill gaps does Myanmar show relative to Singapore and Thailand?</span>
+</li>
+</ol>
+<h3 id="1-5-research-hypotheses">
+<strong>1.5 Research Hypotheses</strong>
+</h3>
+<p>
+<span>Based on labor market segmentation theory and observations of digital economy maturity differences, this study tests three hypotheses:</span>
+</p>
+<ol>
+<li>
+<span>H1 (Market Differentiation Hypothesis): Due to varying digital economy maturity levels, skill demands for the same roles will differ moderately to substantially across Singapore (mature), Thailand (emerging), and Myanmar (developing) markets.</span>
+</li>
+<li>
+<span>H2 (Skills Gap Hypothesis): Myanmar's developing digital economy will exhibit significant skill gaps relative to regional standards, creating distinct preparation requirements for displaced workers seeking employment in Thailand or Singapore.</span>
+</li>
+<li>
+<span>H3 (Taxonomy Adequacy Hypothesis): Existing international occupational taxonomies (O*NET, ESCO) inadequately capture emerging digital economy roles in Southeast Asian contexts, necessitating regional taxonomy frameworks.</span>
+</li>
+</ol>
+<h3 id="1-6-scope-and-limitations">
+<strong>1.6 Scope and Limitations</strong>
+</h3>
+<p>
+<strong>Scope:</strong>
+<span> Five white-collar digital economy roles (Product Management, UI/UX Design, Data Analysis/Science, Business Development, Digital Marketing) across three countries, using LinkedIn job advertisements between October 2025 and November 2025. </span>
+</p>
+<p>
+<strong>Limitations:</strong>
+<span> Reliance on LinkedIn (capturing primarily white-collar roles); Myanmar's smaller sample size; cross-sectional design; job advertisements reflect employer aspirations rather than actual hiring outcomes.</span>
+</p>
+<h3 id="1-7-significance-of-the-study">
+<strong>1.7 Significance of the Study</strong>
+</h3>
+<p>
+<strong>Skills Pathway Gap:</strong>
+<span> Developing economies lack comprehensive frameworks like Singapore's SkillsFuture. This study provides empirical data to inform regional skills pathways.</span>
+</p>
+<p>
+<strong>Market Identification Gap:</strong>
+<span> No cross-comparable analysis exists for underrepresented tech roles across Southeast Asian markets.</span>
+</p>
+<p>
+<strong>Skills Mismatch Research Gap:</strong>
+<span> Research on skills mismatch in low and middle-income countries remains limited due to data quality challenges (McGuinness et al., 2017).</span>
+</p>
+<p>
+<strong>Taxonomy Gap:</strong>
+<span> Thailand and Myanmar lack machine-readable skill taxonomies comparable to ESCO or O*NET.</span>
+</p>
+<p>
+<strong>Industry-Government Gap:</strong>
+<span> Employment platform trend analysis often lacks connection to government-approved qualification structures. This study bridges industry-observed trends with formal skills recognition systems.</span>
+</p>
+<h2 id="chapter-2-literature-review">
+<strong>Chapter 2: Literature Review</strong>
+</h2>
+<h3 id="2-1-the-digital-economy-and-tech-role-competencies">
+<strong>2.1 The Digital Economy and Tech Role Competencies</strong>
+</h3>
+<h4 id="2-1-1-theoretical-foundations">
+<em><strong>2.1.1 Theoretical Foundations</strong></em>
+</h4>
+<p>
+<strong>Human capital theory</strong>
+<span> (Becker, 1964; Schultz, 1961) posits that skills enhance worker productivity and employer demands reflect human capital requirements necessary for organizational productivity.</span>
+</p>
+<p>
+<strong>Skill-biased technological change (SBTC)</strong>
+<span> theory (Autor, Levy, &amp; Murnane, 2003) explains how technology complements non-routine cognitive tasks while substituting routine tasks. Acemoglu and Restrepo (2018) extend this with a task-based framework where new technologies create entirely new task bundles, explaining the emergence of Product Management, UX Design, and Data Science roles that didn't exist in their current form before the digital era.</span>
+</p>
+<h4 id="2-1-2-occupational-taxonomies-and-skill-frameworks">
+<em><strong>2.1.2 Occupational Taxonomies and Skill Frameworks</strong></em>
+</h4>
+<p>
+<strong>O*NET:</strong>
+<span> Developed by the U.S. Department of Labor, contains detailed information for 1,000+ occupations. Ospino Hernandez (2018) found O*NET provides the most comprehensive skill information but noted limitations for non-U.S. contexts and emerging occupations. Product Management, for example, lacks a clear O*NET equivalent, being dispersed across "Marketing Managers" and "IT Project Managers."</span>
+</p>
+<p>
+<strong>ESCO:</strong>
+<span> The European Commission's framework emphasizes cross-border recognition but has European focus limiting Southeast Asian applicability.</span>
+</p>
+<p>
+<strong>Singapore Skills Framework:</strong>
+<span> Developed by SkillsFuture Singapore with industry partners, provides sector-specific skill maps for 34 industry sectors. Its industry-driven development ensures relevance to actual employer requirements and regional applicability.</span>
+</p>
+<h4 id="2-1-3-evolution-of-digital-economy-roles">
+<em><strong>2.1.3 Evolution of Digital Economy Roles</strong></em>
+</h4>
+<p>
+<span>The five roles examined represent distinct functional areas with unique evolutionary trajectories:</span>
+</p>
+<p>
+<strong>Product Management</strong>
+<span> transformed from a marketing-adjacent function to a strategic leadership role responsible for product vision, roadmap development, and cross-functional coordination. The WEF (2023) identifies it among roles experiencing significant growth, yet it remains underrepresented in traditional taxonomies.</span>
+</p>
+<p>
+<strong>UI/UX Design</strong>
+<span> emerged from convergence of graphic design, human-computer interaction, and cognitive psychology. Norman and Nielsen's foundational work on user-centered design established principles guiding the profession.</span>
+</p>
+<p>
+<strong>Data Analysis/Science</strong>
+<span> grew dramatically with digital data proliferation. Davenport and Patil's (2012) declaration of data scientist as "the sexiest job of the 21st century" captured the role's strategic importance. WEF (2023) identifies AI and machine learning specialists as the fastest-growing roles globally.</span>
+</p>
+<p>
+<strong>Business Development</strong>
+<span> in digital economy contexts extends beyond traditional sales to encompass platform partnerships, API integrations, and ecosystem building, requiring hybrid skill sets combining relationship management with technical understanding.</span>
+</p>
+<p>
+<strong>Digital Marketing</strong>
+<span> evolved from applying marketing principles to digital channels to encompassing specialized disciplines including SEO, performance marketing, social media management, content marketing, and marketing automation.</span>
+</p>
+<h3 id="2-2-methodological-approaches-to-skill-demand-analysis">
+<strong>2.2 Methodological Approaches to Skill Demand Analysis</strong>
+</h3>
+<p>
+<span>Job advertisement analysis provides direct evidence of employer-stated demands. The validity rests on assumptions that postings reflect genuine requirements rather than aspirational wish lists, and that online postings represent the broader labor market.</span>
+</p>
+<p>
+<span>Phaphuangwittayakul et al. (2018) analyzed skill demands in Thai labor markets using online job websites, demonstrating feasibility of extracting meaningful skill information in Southeast Asian contexts.</span>
+</p>
+<p>
+<span>Large-scale analyses by Burning Glass Technologies (now Lightcast) have produced reports on skill demand trends and "hybrid jobs" requiring combinations of technical and soft skills.</span>
+</p>
+<p>
+<strong>Traditional limitations:</strong>
+<span> Manual coding is labor-intensive; keyword-based extraction cannot distinguish contextual usage or recognize that "data manipulation" and "data wrangling" refer to similar competencies.</span>
+</p>
+<p>
+<strong>LLM-based approaches</strong>
+<span> (Thida, 2023; Johary et al., 2025) offer:</span>
+</p>
+<ol>
+<li>
+<span>Contextual understanding of implied skills</span>
+</li>
+<li>
+<span>Multilingual capability for mixed-language postings</span>
+</li>
+<li>
+<span>Scalability with consistency</span>
+</li>
+<li>
+<span>Evidence-based extraction with supporting quotes </span>
+</li>
+</ol>
+<p>
+<span>However, systematic validation of LLM-based extraction against human coding remains limited, with methodological standards still developing. </span>
+</p>
+<h3 id="2-3-southeast-asian-labor-markets">
+<strong>2.3 Southeast Asian Labor Markets</strong>
+</h3>
+<p>
+<strong>Singapore</strong>
+<span> consistently ranks among global leaders in digital competitiveness with a comprehensive SkillsFuture framework providing detailed competency maps for technology roles.</span>
+</p>
+<p>
+<strong>Thailand</strong>
+<span> has an expanding tech sector but persistent technical talent shortages. Yulianti and Fitriansyah (2024) found Thailand has made significant progress in expanding tech employment but continues to face workforce skill development challenges.</span>
+</p>
+<p>
+<strong>Myanmar's</strong>
+<span> digital labor market is particularly understudied. Wah (2018) found Myanmar employers place significant weight on international experience, suggesting awareness of local skill gaps relative to regional standards. </span>
+</p>
+<h4 id="2-3-1-regional-skills-frameworks-and-labor-mobility">
+<em><strong>2.3.1 Regional Skills Frameworks and Labor Mobility</strong></em>
+</h4>
+<p>
+<span>ASEAN has pursued skills harmonization through the ASEAN Qualifications Reference Framework (AQRF) and Mutual Recognition Arrangements (MRAs), though coverage of digital economy roles remains limited.</span>
+</p>
+<p>
+<span>Singapore's SkillsFuture framework is the most developed in the region. Thailand's National Qualification Framework and Myanmar's National Skills Qualifications Framework address similar objectives but with less sector-specific detail for digital roles.</span>
+</p>
+<h3 id="2-4-research-gap">
+<strong>2.4 Research Gap</strong>
+</h3>
+<p>
+<span>This study addresses five gaps:</span>
+</p>
+<p>
+<strong>Gap 1:</strong>
+<span> Limited cross-country skill demand analysis in Southeast Asia using consistent methodology.</span>
+</p>
+<p>
+<strong>Gap 2:</strong>
+<span> Myanmar's digital labor market is understudied with no systematic cross-country benchmarking.</span>
+</p>
+<p>
+<strong>Gap 3:</strong>
+<span> Most studies rely on manual coding or keyword extraction, limiting scale. LLM-based approaches show promise but lack systematic validation against established taxonomies.</span>
+</p>
+<p>
+<strong>Gap 4:</strong>
+<span> Existing taxonomies have not been systematically validated for Southeast Asian digital economy roles.</span>
+</p>
+<p>
+<strong>Gap 5:</strong>
+<span> Standard taxonomies may not capture rapidly evolving skill demands in AI and generative AI.</span>
+</p>
+<h2 id="chapter-3-theoretical-and-conceptual-framework">
+<strong>Chapter 3: Theoretical and Conceptual Framework</strong>
+</h2>
+<h3 id="3-1-theoretical-foundation">
+<strong>3.1 Theoretical Foundation</strong>
+</h3>
+<p>
+<strong>Human Capital Theory</strong>
+<span> supports job advertisement analysis as a valid method, if employers accurately identify productivity-enhancing skills, their job postings provide meaningful information about labor market requirements. Key propositions:</span>
+</p>
+<ol>
+<li>
+<span>Skills enhance worker productivity</span>
+</li>
+<li>
+<span>Individuals make rational investments in skill acquisition based on expected returns</span>
+</li>
+<li>
+<span>Job advertisements serve as employer signals of desired human capital</span>
+</li>
+</ol>
+<p>
+<strong>Skill-Biased Technological Change</strong>
+<span> (</span>
+<span>SBTC</span>
+<span>) explains why digital economy roles require non-routine cognitive skills and why new roles have emerged rapidly as new task bundles. SBTC proposes that technology:</span>
+</p>
+<ol>
+<li>
+<span>Complements non-routine cognitive tasks</span>
+</li>
+<li>
+<span>Substitutes routine tasks</span>
+</li>
+<li>
+<span>Creates new tasks and roles</span>
+</li>
+</ol>
+<p>
+<strong>Labor Market Segmentation</strong>
+<span> suggests market maturity (developing, emerging, mature) may systematically influence skill demands. However, the globalized nature of digital economy roles may create convergence pressures that standardize demands across markets.</span>
+</p>
+<h3 id="3-2-conceptual-framework">
+<strong>3.2 Conceptual Framework</strong>
+</h3>
+<h4 id="3-2-1-skill-demand-formation-model">
+<em><strong>3.2.1 Skill Demand Formation Model</strong></em>
+</h4>
+<p>
+<span>The conceptual model underlying this research posits that employer skill demands emerge from the interaction of:</span>
+</p>
+<ol>
+<li>
+<strong>Role requirements</strong>
+<span>: The functional tasks and responsibilities associated with each occupational role.</span>
+</li>
+<li>
+<strong>Technology adoption</strong>
+<span>: The technologies employed in organizations, which shape both task requirements and skill needs.</span>
+</li>
+<li>
+<strong>Market context</strong>
+<span>: Local labor market conditions, including talent availability, competitive pressures, and regulatory environment.</span>
+</li>
+<li>
+<strong>Global diffusion</strong>
+<span>: The spread of role definitions and skill expectations through multinational companies, professional communities, and labor mobility.</span>
+</li>
+</ol>
+<p>
+<span>Job advertisements represent the observable expression of these underlying factors, providing a window into employer skill requirements.</span>
+</p>
+<h4 id="3-2-2-dual-taxonomy-approach">
+<em><strong>3.2.2 Dual-Taxonomy Approach</strong></em>
+</h4>
+<ul>
+<li>
+<strong>O*NET:</strong>
+<span> International comparability, academic credibility</span>
+</li>
+<li>
+<strong>Singapore Skills Framework:</strong>
+<span> Regional relevance, coverage of emerging roles</span>
+</li>
+</ul>
+<p>
+<span>This addresses the limitation that neither framework alone captures skill demands for all roles across all contexts.</span>
+</p>
+<h4 id="3-2-3-cross-market-comparison-dimensions">
+<em><strong>3.2.3 Cross-Market Comparison Dimensions</strong></em>
+</h4>
+<p>
+<span>The comparative analysis framework structures market comparison around:</span>
+</p>
+<ol>
+<li>
+<strong>Skill coverage</strong>
+<span>: Whether skills demanded in benchmark markets are present in target markets.</span>
+</li>
+<li>
+<strong>Skill intensity</strong>
+<span>: The frequency with which specific skills are demanded across markets.</span>
+</li>
+<li>
+<strong>Structural similarity</strong>
+<span>: The overall alignment of skill demand profiles between markets.</span>
+</li>
+<li>
+<strong>Emerging skills</strong>
+<span>: Skills appearing in job advertisements but not captured by existing taxonomies, representing evolving requirements.</span>
+</li>
+</ol>
+<p>
+<span>These dimensions enable systematic benchmarking while acknowledging that markets may differ in various ways beyond simple more/less differentiation.</span>
+</p>
+<h3 id="3-3-application-to-research-questions">
+<strong>3.3 Application to Research Questions</strong>
+</h3>
+<p>
+<strong>SRQ1</strong>
+<span> is informed by SBTC's prediction that digital economy roles require non-routine cognitive skills, and by human capital theory's proposition that employer demands reflect productivity-relevant competencies. Labor market theory suggests mature and emerging markets may show convergent skill demands due to globalized digital economy standards.</span>
+</p>
+<p>
+<strong>SRQ2</strong>
+<span> is informed by labor market segmentation theory's expectation of variation by market maturity, while acknowledging developing markets may show different patterns due to earlier stages of digital economy development.</span>
+</p>
+<h2 id="chapter-4-research-methodology">
+<strong>Chapter 4: Research Methodology</strong>
+</h2>
+<h3 id="4-1-research-philosophy-and-approach">
+<strong>4.1 Research Philosophy and Approach</strong>
+</h3>
+<p>
+<span>This study adopts a </span>
+<strong>positivist epistemological stance</strong>
+<span>, treating job advertisements as objective artifacts reflecting employer-driven skill demands. The ontological position assumes skill demands exist as measurable phenomena that can be extracted and quantified from textual data.</span>
+</p>
+<p>
+<span>The study employs a </span>
+<strong>hybrid deductive-inductive approach</strong>
+<span>: using established taxonomies (O*NET, Singapore Skills Framework) to guide classification, while incorporating inductive elements through identification of emerging skills not captured by existing taxonomies.</span>
+</p>
+<h3 id="4-2-research-design">
+<strong>4.2 Research Design</strong>
+</h3>
+<p>
+<span>Comparative, cross-sectional design analyzing secondary data from LinkedIn job advertisements across three markets:</span>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Country</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Classification</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Selection Rationale</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Singapore</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Mature</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Benchmark market representing mature skill demand standards</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Thailand</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Emerging</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Intermediate benchmark representing emerging market dynamics</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Myanmar</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Developing</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Target market for gap analysis and workforce development recommendations</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 4.1: Country Selection and Market Context  </em>
+</p>
+<p>
+<strong>Target Roles:</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Role</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Description</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Product Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Product strategy, roadmap development, cross-functional coordination</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>UI/UX Design</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>User experience research, interface design, usability optimization</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Analysis/Science</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data-driven insights, statistical analysis, machine learning applications</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Business Development</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Revenue growth, partnership development, market expansion</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Digital Marketing</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Online marketing strategy, campaign management, growth optimization</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 4.2: Target Roles and Descriptions  </em>
+</p>
+<h3 id="4-3-data-collection">
+<strong>4.3 Data Collection</strong>
+</h3>
+<p>
+<span>Data collected from LinkedIn using Apify between October 2025 and November 2025. </span>
+</p>
+<p>
+<strong>Search Query Development Process:</strong>
+</p>
+<ol>
+<li>
+<strong>Taxonomy Comparative Review:</strong>
+<span> Seven occupational taxonomies reviewed (ISCO-08, O*NET-SOC 2019, ESCO v1.2, ASEAN QRF, Singapore SF, Thailand PQF, Myanmar NSQF)</span>
+</li>
+<li>
+<strong>Job Title Extraction:</strong>
+<span> Compiled role variations from taxonomies</span>
+</li>
+<li>
+<strong>Query Formulation:</strong>
+<span> Boolean OR queries combining high-priority terms</span>
+</li>
+</ol>
+<p>
+<strong>Raw Data:</strong>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image2.png"/>
+</span>
+</p>
+<p>
+<em>Figure 4.1: Raw Data Collection by Role and Country</em>
+</p>
+<p>
+<span>Myanmar's significantly smaller sample (3.4%) reflects the smaller digital economy and lower LinkedIn penetration.</span>
+</p>
+<h3 id="4-4-data-processing-pipeline">
+<strong>4.4 Data Processing Pipeline</strong>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image5.png"/>
+</span>
+</h3>
+<p>
+<em>Figure 4.2</em>
+<em>: Data Processing Pipeline</em>
+</p>
+<p>
+<strong>Deduplication:</strong>
+<span> Two-layer approach (intra-file and inter-file) ensuring each job appears once. Thailand and Myanmar exhibited higher duplication rates (18.6%, 27.1%) than Singapore (11.9%).</span>
+</p>
+<p>
+<strong>Quality Filtering:</strong>
+<span> Required 8 fields present and minimum 500-character descriptions. Myanmar's higher removal rate (27.5%) reflects less standardized job posting practices.</span>
+</p>
+<p>
+<strong>Stratified Sampling:</strong>
+<span> 300 jobs per role for Singapore/Thailand; all Myanmar jobs included.</span>
+</p>
+<p>
+<strong>Final Analysis Sample:</strong>
+<span> 967 high-confidence jobs (Singapore: 546, Thailand: 385, Myanmar: 36).</span>
+</p>
+<h3 id="4-5-role-classification-and-taxonomy-mapping">
+<strong>4.5 Role Classification and Taxonomy Mapping</strong>
+</h3>
+<p>
+<strong>The Taxonomy Challenge:</strong>
+<span> Standard classification systems (O*NET, ISCO-08) were developed for traditional industries. Emerging roles,particularly Product Management,may not have direct equivalents. Rather than assuming theoretical alignment, this study employed empirical validation.</span>
+</p>
+<p>
+<strong>Empirical Validation (100-job sample):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Role</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>O*NET Alignment</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>SG Framework</strong>
+<strong> </strong>
+<strong>Alignment</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Gap</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Product Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>40.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>100.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>59.1%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Digital Marketing</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>52.5%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>98.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>45.5%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>UI/UX Design</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>62.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>100.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>38.0%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Business Development</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>62.5%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>98.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>35.8%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Analysis/Science</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>66.5%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>100.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>33.5%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 4.3: Taxonomy Alignment Comparison</em>
+</p>
+<p>
+<strong>Key Finding:</strong>
+<span> Product Management exhibited the largest taxonomy gap, O*NET classifies it under "IT Project Managers," lacking core concepts like product strategy, product vision, product roadmap, and feature prioritization. Singapore Skills Framework consistently outperformed O*NET, suggesting regional frameworks better capture emerging digital economy roles than legacy international standards.</span>
+</p>
+<h3 id="4-6-skill-extraction-methodology">
+<strong>4.6 Skill Extraction Methodology</strong>
+</h3>
+<p>
+<strong>Taxonomy Lookup Table:</strong>
+<span> Synthesized from O*NET (skills for five mapped occupations) and Singapore Skills Framework (Technical Skills and Competencies from relevant ICT tracks). Resulting taxonomy: </span>
+<strong>1,717 standardized skill terms</strong>
+<span>.</span>
+</p>
+<p>
+<strong>LLM Configuration:</strong>
+<span> Gemini 2.5 Flash, temperature=0 (deterministic), JSON output.</span>
+</p>
+<p>
+<strong>Extraction Categories:</strong>
+<span> Technical Skills, Soft Skills, Domain Knowledge, Methodologies, Certifications.</span>
+</p>
+<p>
+<strong>Extraction Rules:</strong>
+</p>
+<ol>
+<li>
+<span>Every skill must have supporting evidence (direct quote)</span>
+</li>
+<li>
+<span>Confidence levels: HIGH (explicitly named), MEDIUM (clearly implied), LOW (vaguely referenced)</span>
+</li>
+<li>
+<span>Skill names normalized to standard forms</span>
+</li>
+<li>
+<span>Compound skills split into separate entries</span>
+</li>
+<li>
+<span>Generic phrases without skill context excluded</span>
+</li>
+</ol>
+<p>
+<strong>Method Comparison (100-job validation):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Metric</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Rule-Based</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>LLM</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Ratio</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Total skill mentions</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>461</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>3,142</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>6.82×</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Unique skills found</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>126</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>559</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>4.44×</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Taxonomy coverage</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>7.34%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>29.30%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>4.0×</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 4.4: Skill Extraction Method Comparison</em>
+</p>
+<ul>
+<li>
+<span>LLM extraction identified 6.82× more skill mentions</span>
+</li>
+<li>
+<span>Rule-based extraction failed completely on 9 Thai-language job advertisements</span>
+</li>
+<li>
+<span>93.7% of rule-based skills were also found by LLM extraction</span>
+</li>
+<li>
+<span>LLM identified 434 unique non-taxonomy skills representing emerging demands</span>
+</li>
+</ul>
+<p>
+<strong>Full Dataset Results (3,247 sampled jobs):</strong>
+<span> 133,714 total skills extracted; 116,794 taxonomy-matched; 16,920 non-taxonomy; average 41.2 skills per job; 99.9% processing success rate.</span>
+</p>
+<p>
+<strong>Note:</strong>
+<span> The high-confidence filtered sample (967 jobs) used for final analysis shows lower average skills per job (28.8-36.0 by country) due to stricter role classification criteria that excluded ambiguous postings.</span>
+</p>
+<h3 id="4-7-analytical-procedures">
+<strong>4.7 Analytical Procedures</strong>
+</h3>
+<p>
+<strong>Gap Metrics:</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Metric</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Description</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Interpretation</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Cosine Similarity</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Similarity of skill frequency vectors</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Overall profile similarity (0-1)</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Coverage Gap</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>% of benchmark skills absent in target</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Missing skills</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Skill Intensity</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Average skills per job comparison</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Job specificity/complexity</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 4.5: Gap Analysis Metrics</em>
+</p>
+<p>
+<strong>Statistical Validation:</strong>
+</p>
+<ul>
+<li>
+<strong>T-tests:</strong>
+<span> Used to compare continuous variables (e.g., average skills per job) between countries</span>
+</li>
+<li>
+<strong>Effect Size (Cohen's d):</strong>
+<span> Calculated to assess practical significance (d &lt; 0.2 negligible, 0.2-0.5 small, 0.5-0.8 medium, ≥0.8 large)</span>
+</li>
+<li>
+<strong>Cosine Similarity:</strong>
+<span> Cross-market profile alignment measured on 0-1 scale</span>
+</li>
+<li>
+<strong>Confidence Intervals:</strong>
+<span> 95% CIs calculated using standard error of the mean for skills per job estimates</span>
+</li>
+</ul>
+<h3 id="4-8-quality-assurance">
+<strong>4.8 Quality Assurance</strong>
+</h3>
+<p>
+<strong>Data Quality Controls:</strong>
+<span> Two-layer deduplication, eight required fields, minimum description length, stratified sampling.</span>
+</p>
+<p>
+<strong>Extraction Quality Controls:</strong>
+<span> Evidence requirement, confidence scoring, taxonomy validation, prompt validation (12-15% improvement from v1.0 to v1.1).</span>
+</p>
+<p>
+<strong>Reproducibility:</strong>
+<span> Deterministic LLM processing (temperature=0), fixed random seeds, documented processing steps.</span>
+</p>
+<h3 id="4-9-ethical-considerations">
+<strong>4.9 Ethical Considerations</strong>
+</h3>
+<p>
+<span>Job advertisements are publicly posted on LinkedIn. Data contains no personal information about job seekers. Company names retained as publicly associated with postings. Data used solely for academic research, reported in aggregate form. </span>
+</p>
+<p>
+<span>This research employed AI tools at two stages: </span>
+</p>
+<ol>
+<li>
+<span>Google Gemini 2.5 Flash for automated skill extraction from job advertisements, configured with temperature=0 for deterministic outputs and validated through human review (see Section 4.6/4.7); and </span>
+</li>
+<li>
+<span>Anthropic Claude (Sonnet 3.5 and Opus 4.5) for developing data processing and statistical analysis scripts, visualization and for crafting extraction prompts. The author remained responsible for all research design, decisions, data interpretation, and conclusions. All AI-generated outputs were reviewed and validated by the researcher. </span>
+</li>
+</ol>
+<h3 id="4-10-methodological-limitations">
+<strong>4.10 Methodological Limitations</strong>
+</h3>
+<p>
+<span>Key methodological constraints include: single platform data source (LinkedIn), cross-sectional design, Myanmar's limited sample size (n=36), and LLM extraction without per-result human validation. A comprehensive discussion of limitations and their implications appears in Section 6.5.</span>
+</p>
+<h2 id="chapter-5-data-presentation-and-analysis">
+<strong>Chapter 5: Data Presentation and Analysis</strong>
+</h2>
+<h3 id="5-1-dataset-overview">
+<strong>5.1 Dataset Overview</strong>
+</h3>
+<p>
+<strong>Sample Composition:</strong>
+</p>
+<p>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image8.png"/>
+</span>
+</p>
+<p>
+<em>Figure 5.1: Average Skills per Job by Country</em>
+</p>
+<p>
+<span>Singapore jobs list ~7 more skills than Myanmar. T-test: p=0.005, Cohen's d=-0.42 (small effect), indicating statistically significant difference.</span>
+</p>
+<p>
+<strong>By Role:</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Role</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Myanmar</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Total</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Business Development</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>152</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>130</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>27</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>309</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Analysis/Science</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>147</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>64</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>2*</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>213</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Digital Marketing</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>109</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>104</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>3*</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>216</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Product Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>107</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>46</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>1*</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>154</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>UI/UX Design</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>31</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>41</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>3*</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>75</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 5.1: Sample Distribution by Role </em>
+</p>
+<p>
+<em>*Myanmar roles with n&lt;10 are unreliable for role-specific analysis.</em>
+</p>
+<p>
+<em><strong>Important Note:</strong></em>
+<em> Myanmar's sample (n=36) is 75% Business Development. Product Management (n=1), Data Analysis (n=2), Digital Marketing (n=3), UI/UX Design (n=3) findings for Myanmar are interpreted with extreme caution.</em>
+</p>
+<h3 id="5-2-sub-research-question-1-skill-demands-and-cross-market-c">
+<strong>5.2 Sub-Research Question 1: Skill Demands and Cross-Market Consistency</strong>
+</h3>
+<h4 id="5-2-1-universal-foundation-skills">
+<em><strong>5.2.1 Universal Foundation Skills</strong></em>
+</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Overall %</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Myanmar</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Communication</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>77.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>79.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>71.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>102.8%*</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Collaboration</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>65.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>67.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>61.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>97.2%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Problem Solving</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>44.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>47.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>42.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Analysis</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>42.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>44.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>38.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Project Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>38.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>41.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>37.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 5.2: Universal Foundation Skills</em>
+</p>
+<p>
+<em>*Percentages &gt;100% indicate multiple mentions per job.</em>
+</p>
+<p>
+<span>These five skills appear consistently across all market maturity levels and all five roles, foundational competencies for digital economy employment regardless of job function or geographic market.</span>
+</p>
+<h4 id="5-2-2-top-10-skills-by-country">
+<em><strong>5.2.2 Top 10 Skills by Country</strong></em>
+</h4>
+<p>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image11.png"/>
+</span>
+</p>
+<p>
+<em>Figure 5.2: Top 10 Skills by Country </em>
+</p>
+<p>
+<strong>Singapore</strong>
+<span> exhibits the highest demand for analytical and strategic skills (Critical Thinking, Strategy Planning, Business Analysis), reflecting a mature digital economy with strategic decision-making emphasis.</span>
+</p>
+<p>
+<strong>Thailand</strong>
+<span> shows patterns similar to Singapore with slightly lower intensity. Marketing Campaign Management appears in Thailand's top 10 (33.2%) but not Singapore's, reflecting Thailand's strong digital marketing sector.</span>
+</p>
+<p>
+<strong>Myanmar's</strong>
+<span> top skills reflect sample composition (predominantly Business Development). Customer Relationship Management, Business Relationship Building, and Sales Target Management are characteristic of sales-focused positions.</span>
+</p>
+<h4 id="5-2-3-skill-category-distribution">
+<em><strong>5.2.3 Skill Category Distribution</strong></em>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image3.png"/>
+</span>
+</h4>
+<p>
+<em>Figure 5.3: Skill Category Distribution by Country</em>
+<span> </span>
+</p>
+<p>
+<strong>Key Findings:</strong>
+</p>
+<ol>
+<li>
+<strong>Technical Skills Gap:</strong>
+<span> Myanmar shows 12-percentage-point gap vs Singapore (19.4% vs 31.8%)</span>
+</li>
+<li>
+<strong>Soft Skills Emphasis:</strong>
+<span> Myanmar shows higher concentration (36.1%) reflecting service-oriented economy</span>
+</li>
+<li>
+<strong>SG-TH Consistency:</strong>
+<span> Similar distributions across all categories,standardized regional role definitions</span>
+</li>
+<li>
+<strong>Certifications Rare:</strong>
+<span> 2.8-3.5% across all markets,employers prioritize demonstrated skills over credentials</span>
+</li>
+</ol>
+<h4 id="5-2-4-role-specific-skill-profiles-singapore-vs-thailand">
+<em><strong>5.2.4 Role-Specific Skill Profiles (Singapore vs Thailand)</strong></em>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image1.png"/>
+</span>
+</h4>
+<p>
+<em>Figure 5.4: Role-Specific Skill Profiles (Singapore vs. Thailand)</em>
+</p>
+<p>
+<strong>Business Development (SG=152, TH=130):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Difference</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Communication</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>92.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>80.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+12.8%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Collaboration</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>90.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>65.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>+25.4%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Business Development</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>88.2%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>80.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+8.2%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Business Relationship Building</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>73.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>63.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+9.9%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Negotiation</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>56.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>54.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+2.0%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<span> </span>
+<em>Table 5.3: Business Development Role Profile (Singapore vs Thailand)</em>
+</p>
+<p>
+<span>Strong alignment between markets; Singapore consistently demands skills at slightly higher rates. The largest gap is Collaboration (+25.4 percentage points).</span>
+</p>
+<p>
+<strong>Data Analysis/Science (SG=147, TH=64):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Difference</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Collaboration</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>89.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>89.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>0.0%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Python</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>71.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>81.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>-9.9%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>SQL</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>65.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>78.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>-12.8%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Problem Solving</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>49.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>62.5%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-13.5%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Visualization</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>38.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>48.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-10.3%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<span> </span>
+<em>Table 5.4: Data Analysis/Science Role Profile (Singapore vs Thailand)</em>
+</p>
+<p>
+<strong>Unexpected finding:</strong>
+<span> Thailand specifies technical skills at higher rates than Singapore, particularly Python (+9.9%), SQL (+12.8%). This may reflect Thailand employers specifying requirements more explicitly, while Singapore employers assume baseline technical competencies.</span>
+</p>
+<p>
+<strong>Digital Marketing (SG=109, TH=104):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Difference</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Marketing Campaign Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>89.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>64.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>+24.6%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Analysis</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>72.5%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>52.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+19.6%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Social Media Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>63.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>66.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-3.0%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Market Research</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>56.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>45.2%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+10.8%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Brand Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>45.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>52.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-7.9%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 5.5: Digital Marketing Role Profile (Singapore vs Thailand)</em>
+</p>
+<p>
+<span>Largest cross-market variation in Marketing Campaign Management (24.6% points higher in Singapore). Data Analysis as a marketing skill shows similar divergence, reflecting Singapore's more data-driven marketing ecosystem.</span>
+</p>
+<p>
+<strong>Product Management (SG=107, TH=46):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Difference</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Collaboration</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>100.9%*</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>87.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+13.9%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Product Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>96.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>80.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+15.9%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Product Roadmap Development</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>81.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>71.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+9.6%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Problem Solving</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>72.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>73.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-1.0%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Agile Methodology</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>56.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>52.2%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+3.9%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<span> </span>
+<em>Table 5.6: Product Management Role Profile (Singapore vs Thailand)</em>
+</p>
+<p>
+<span>Highest average skill count (38.1 per job) reflecting cross-functional nature. Cross-market consistency is high, most skills show &lt;10 percentage points variation.</span>
+</p>
+<p>
+<strong>UI/UX Design (SG=31, TH=41):</strong>
+</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Difference</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>User Experience Design</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>96.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>36.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>+60.2%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>User Interface Design</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>77.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>31.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+45.7%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Problem Solving</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>71.0%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>31.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+39.3%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Digital Prototyping</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>61.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>29.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+32.0%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>User Testing</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>58.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>26.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+31.3%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<span> </span>
+<em>Table 5.7: UI/UX Design Role Profile (Singapore vs Thailand)</em>
+</p>
+<p>
+<strong>Largest cross-market variation among all roles.</strong>
+<span> Singapore explicitly mentions UX/UI terminology at dramatically higher rates. This divergence may reflect different job posting conventions, Thailand postings may use different terminology or assume skills as implicit for design roles.</span>
+</p>
+<h4 id="5-2-5-cross-market-role-consistency">
+<em><strong>5.2.5 Cross-Market Role Consistency</strong></em>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image4.png"/>
+</span>
+</h4>
+<p>
+<em>Figure 5.5: Cross-Market Role Consistency (Cosine Similarity)</em>
+</p>
+<p>
+<strong>Key Findings:</strong>
+</p>
+<ol>
+<li>
+<strong>Four of five roles show very high consistency (&gt;0.94)</strong>
+<span>, indicating digital economy roles have become standardized across Southeast Asian markets</span>
+</li>
+<li>
+<strong>UI/UX Design is the outlier</strong>
+<span> (0.695),may reflect different posting conventions, smaller samples, or genuine market differences</span>
+</li>
+<li>
+<strong>Regional role standardization supports labor mobility</strong>
+<span>, </span>
+<span>professionals with Singapore-aligned skills would meet Thailand requirements, and vice versa.</span>
+</li>
+</ol>
+<h3 id="5-3-sub-research-question-2-myanmar-skill-gaps">
+<strong>5.3 Sub-Research Question 2: Myanmar Skill Gaps</strong>
+</h3>
+<h4 id="5-3-1-market-similarity">
+<em><strong>5.3.1 Market Similarity</strong></em>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image9.png"/>
+</span>
+</h4>
+<p>
+<em>Figure 5.6: Market Similarity Scores</em>
+</p>
+<p>
+<span>Singapore and Thailand demonstrate near-identical skill demand structures. Myanmar shows meaningful alignment (&gt;83%) but exhibits more divergence from Singapore than Thailand, suggesting Myanmar may be at an earlier development stage more comparable to Thailand's intermediate position.</span>
+</p>
+<h4 id="5-3-2-coverage-gap-analysis">
+<em><strong>5.3.2 Coverage Gap Analysis</strong></em>
+</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Threshold</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>MM vs SG Missing</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>MM vs TH Missing</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Skills in ≥5% of benchmark</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>14.1%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>12.3%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Skills in ≥10% of benchmark</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>4.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>3.5%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Skills in ≥15% of benchmark</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>2.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>1.8%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 5.8: Coverage Gap Analysis</em>
+</p>
+<p>
+<span>Myanmar covers most high-frequency skills,gaps are primarily in frequency rather than presence/absence. At ≥15% threshold, only 2.9% of skills are missing.</span>
+</p>
+<h4 id="5-3-3-skill-intensity-gap">
+<em><strong>5.3.3 Skill Intensity Gap</strong></em>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image7.png"/>
+</span>
+</h4>
+<p>
+<em>Figure 5.7: Skill Intensity Comparison by Country</em>
+</p>
+<p>
+<span>Myanmar demands significantly fewer skills per job (28.8 vs 36.0). This may reflect less complex role definitions, different labor market maturity, or sample composition effects (75% Business Development).</span>
+</p>
+<h4 id="5-3-4-ai-ml-emerging-skills-gap">
+<em><strong>5.3.4 AI/ML Emerging Skills Gap</strong></em>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image6.png"/>
+</span>
+</h4>
+<p>
+<em>Figure 5.8: AI/ML Emerging Skills Gap by Country</em>
+</p>
+<p>
+<span>Advanced AI skills are virtually absent from Myanmar job postings, a significant technology adoption gap. Singapore leads with more than double the Machine Learning demand compared to Thailand.</span>
+</p>
+<h4 id="5-3-5-myanmar-relative-strengths">
+<em><strong>5.3.5 Myanmar Relative Strengths</strong></em>
+</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Myanmar</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Thailand</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Communication</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>102.8%*</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>79.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>71.4%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Collaboration</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>97.2%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>67.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>61.3%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Customer Orientation</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>55.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>35.3%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>35.1%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 5.9: Myanmar Relative Strengths</em>
+</p>
+<p>
+<span>Myanmar places particularly strong emphasis on communication and collaboration skills, reflecting service-oriented economy and importance of interpersonal skills in local business context.</span>
+</p>
+<h4 id="5-3-6-myanmar-business-development-deep-dive-n-27">
+<em><strong>5.3.6 Myanmar Business Development Deep Dive (n=27)</strong></em>
+</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skill</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Myanmar</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Singapore</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>MM vs SG</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Customer Relationship Management</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>85.2%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>56.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>+28.6%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Report Writing</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>55.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>30.9%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+24.7%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Customer Orientation</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>66.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>47.4%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>+19.3%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Negotiation</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>40.7%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>56.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>-15.9%</strong>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Data Analysis</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>29.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>40.8%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-11.2%</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Sales Closure</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>29.6%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>41.5%</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>-11.9%</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 5.10: Myanmar Business Development Deep Dive</em>
+</p>
+<p>
+<strong>Pattern:</strong>
+<span> Myanmar emphasizes relationship-oriented skills; lower demand for technical/analytical skills.</span>
+</p>
+<p>
+<strong>Interpretation:</strong>
+<span> The Myanmar Business Development skill profile suggests a market where:</span>
+</p>
+<ul>
+<li>
+<span>Interpersonal relationships are paramount to business success</span>
+</li>
+<li>
+<span>Customer relationship management is prioritized over analytical sales approaches</span>
+</li>
+<li>
+<span>Presentation and communication skills are heavily valued (face-to-face business culture)</span>
+</li>
+<li>
+<span>Data-driven sales methodologies (A/B testing, analytics) are less prominent</span>
+</li>
+</ul>
+<p>
+<strong>Potential explanations:</strong>
+</p>
+<ol>
+<li>
+<span>Earlier stage of digital sales transformation</span>
+</li>
+<li>
+<span>Cultural emphasis on relationship-based business</span>
+</li>
+<li>
+<span>Industry mix (insurance, financial services noted in emerging skills)</span>
+</li>
+<li>
+<span>Smaller company sizes requiring generalist relationship managers</span>
+</li>
+</ol>
+<p>
+<span>Despite differences, Myanmar Business Development shows </span>
+<span>high cosine similarity</span>
+<span> with Singapore (0.916) and Thailand (0.917). Cosine similarity measures how closely two skill profiles match in their overall composition; scores above 0.90 indicate that fundamental role definitions remain aligned with regional standards despite variations in specific skill emphasis.</span>
+</p>
+<h3 id="5-4-taxonomy-validation-findings-objective-3">
+<strong>5.4 Taxonomy Validation Findings (Objective 3)</strong>
+</h3>
+<p>
+<span>Objective 3 sought to validate whether O*NET and Singapore Skills Framework taxonomies adequately capture digital economy skill demands in Southeast Asia. The dual-taxonomy approach revealed significant coverage limitations:</span>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image12.png"/>
+</span>
+</p>
+
+<p>
+<em>Figure 5.9: Taxonomy Alignment Comparison (ONET vs Singapore Skills Framework)</em>
+</p>
+<p>
+<strong>Key Validation Findings:</strong>
+</p>
+<ul>
+<li>
+<strong>Regional Framework Advantage:</strong>
+<span> Singapore Skills Framework showed 9.4 percentage points higher alignment than O*NET, suggesting regional taxonomies better capture Southeast Asian market realities</span>
+</li>
+<li>
+<strong>Emerging Technology Gap:</strong>
+<span> Both taxonomies showed limited coverage of AI/ML skills (Machine Learning, Generative AI, Prompt Engineering) that appeared frequently in job postings</span>
+</li>
+<li>
+<strong>Language Skills Absence:</strong>
+<span> Neither taxonomy adequately captured language proficiency demands (English, Thai, Mandarin) despite their prominence in regional job markets</span>
+</li>
+<li>
+<strong>Role-Specific Gaps:</strong>
+<span> Product Management and UI/UX Design roles showed lowest taxonomy alignment, reflecting these roles' evolution beyond traditional occupational classifications</span>
+</li>
+</ul>
+<p>
+<span>These findings suggest that established skill taxonomies require supplementation with market-derived skills for accurate Southeast Asian workforce planning, a key methodological contribution of this research.</span>
+</p>
+<h3 id="5-5-emerging-skills-analysis-objective-4">
+<strong>5.5 Emerging Skills Analysis (Objective 4)</strong>
+</h3>
+<p>
+<strong>Top Non-Taxonomy Skills:</strong>
+</p>
+<p>
+<span>
+<img alt="Figure" loading="lazy" src="assets/image10.png"/>
+</span>
+</p>
+<p>
+<em>Figure 5.10: Top Non-Taxonomy Emerging Skills</em>
+</p>
+<p>
+<span>AI/ML skills dominate emerging demands, suggesting taxonomies lag market reality.</span>
+</p>
+<p>
+<strong>Country-Specific Emerging Skills:</strong>
+</p>
+<ul>
+<li>
+<strong>Singapore:</strong>
+<span> Generative AI, Prompt Engineering, LLMs, Web3/Blockchain, Mandarin</span>
+</li>
+<li>
+<strong>Thailand:</strong>
+<span> Thai Language, Influencer Marketing, Trade Marketing, Databricks</span>
+</li>
+<li>
+<strong>Myanmar:</strong>
+<span> Burmese Language, Insurance Industry Knowledge, Financial Services, Strategic Thinking</span>
+</li>
+</ul>
+<h3 id="5-6-summary-of-findings">
+<strong>5.6 Summary of Findings</strong>
+</h3>
+<p>
+<strong>Objective 3 (Taxonomy Validation):</strong>
+<span> Singapore Skills Framework (71.8% alignment) outperformed O*NET (62.4% alignment) for Southeast Asian markets. Both taxonomies showed gaps in AI/ML and language skills coverage, suggesting need for regional supplementation.</span>
+</p>
+<p>
+<strong>Objective 4 (Emerging Skills):</strong>
+<span> AI/ML skills (Machine Learning 6.6%, Generative AI 2.8%) and language proficiencies (English 7.1%, Thai 4.0%) represent the most prominent non-taxonomy skills, indicating areas where workforce development should extend beyond established frameworks.</span>
+</p>
+<p>
+<strong>SRQ1:</strong>
+<span> Communication (77.1%), Collaboration (65.4%), Problem Solving (44.8%) are universally demanded. Singapore and Thailand show 97.0% similarity, digital economy roles are regionally standardized. Four of five roles show &gt;0.94 consistency.</span>
+</p>
+<p>
+<strong>SRQ2:</strong>
+<span> Myanmar shows 83.9% alignment with Singapore but exhibits:</span>
+</p>
+<ul>
+<li>
+<span>20% lower skill intensity per job</span>
+</li>
+<li>
+<span>12-percentage-point technical skills gap</span>
+</li>
+<li>
+<span>Virtual absence of AI/ML skills</span>
+</li>
+<li>
+<span>Stronger emphasis on relationship-oriented skills (CRM +28.6%, Customer Orientation +19.3%)</span>
+</li>
+</ul>
+<p>
+<em><strong>Note:</strong></em>
+<em> Myanmar findings are exploratory due to sample size (n=36, 75% Business Development).</em>
+</p>
+<h2 id="chapter-6-discussion-and-conclusion">
+<strong>Chapter 6: Discussion and Conclusion</strong>
+</h2>
+<h3 id="6-1-discussion-of-findings">
+<strong>6.1 Discussion of Findings</strong>
+</h3>
+<h4 id="6-1-1-hypothesis-evaluation">
+<em><strong>6.1.1 Hypothesis Evaluation</strong></em>
+</h4>
+<p>
+<span>Before addressing the research questions, the researcher evaluates the three hypotheses stated in Section 1.5:</span>
+</p>
+
+<ol>
+<li>
+<em><strong>H1 (Market Differentiation Hypothesis): NOT SUPPORTED</strong></em>
+</li>
+</ol>
+<p>
+<span>The researcher</span>
+<span> hypothesized that skill demands would differ moderately to substantially across markets of varying maturity. However, findings revealed 97.0% similarity between Singapore and Thailand, near-identical rather than moderately different. Myanmar showed 83.9% alignment with Singapore despite being at an early development stage.</span>
+</p>
+<p>
+<span>This unexpected finding suggests that digital economy roles have become highly standardized across Southeast Asian markets regardless of economic development differences. Globalization forces, multinational company presence, international recruitment practices, and professional community connectedness, appear to standardize role definitions more powerfully than market maturity differentiates them.</span>
+</p>
+<ol>
+<li>
+<em><strong>H2 (Skills Gap Hypothesis): PARTIALLY SUPPORTED</strong></em>
+</li>
+</ol>
+<p>
+<span>Myanmar does exhibit significant gaps: 20% lower skill intensity (28.8 vs 36.0 skills per job), 12-percentage-point technical skills gap, and virtual absence of AI/ML competencies. These gaps support the hypothesis that displaced workers would require targeted skill development for regional employment.</span>
+</p>
+<p>
+<span>However, the high structural similarity (&gt;83%) suggests gaps are matters of depth and emerging competencies rather than fundamentally different role requirements. Core skill demands remain aligned with regional standards, indicating preparation pathways should focus on specific competency gaps rather than complete role redefinition.</span>
+</p>
+<ol>
+<li>
+<em><strong>H3 (Taxonomy Adequacy Hypothesis): STRONGLY SUPPORTED</strong></em>
+</li>
+</ol>
+<p>
+<span>Singapore Skills Framework demonstrated 98-100% alignment with actual job requirements versus O*NET's 41-67% alignment. Product Management showed the largest gap (100% vs 40.9%), with O*NET lacks core concepts like product strategy, product vision, and feature prioritization.</span>
+</p>
+<p>
+<span>This strongly confirms that regional frameworks better capture emerging digital economy roles than legacy international standards developed for traditional industries. The finding has direct implications for workforce development initiatives in Southeast Asia.</span>
+<span> </span>
+</p>
+<h4 id="6-1-2-addressing-the-research-questions">
+<em><strong>6.1.2 Addressing the Research Questions</strong></em>
+</h4>
+<p>
+<strong>Main Research Question:</strong>
+<span> Digital economy skill demands in Southeast Asia are characterized by universal foundation skills (Communication, Collaboration, Problem Solving) and role-specific technical competencies. Myanmar's profile shows 20% lower skill intensity, underrepresentation in technical skills (19.4% vs 31.8%), and virtual absence of AI/ML competencies, areas where workforce development interventions could have significant impact.</span>
+</p>
+<p>
+<strong>SRQ1:</strong>
+<span> The 97.0% Singapore-Thailand similarity represents a key contribution. This near-identical alignment suggests digital economy roles have become standardized across Southeast Asian markets regardless of economic development differences. Four of five roles showed &gt;0.94 similarity.</span>
+</p>
+<p>
+<span>This consistency has important implications: skills developed for Singapore are directly transferable to Thailand, and vice versa. Standardization likely reflects multinational company influence, global role diffusion through professional communities, and the inherently international nature of digital economy work.</span>
+</p>
+<p>
+<span>The UI/UX Design exception (0.695 similarity) warrants attention, may reflect genuine market differences, different posting conventions, or sample size limitations (n=72 total).</span>
+</p>
+<p>
+<strong>SRQ2:</strong>
+<span> Myanmar shows meaningful alignment (83.9% with Singapore, 88.1% with Thailand) but exhibits notable gaps:</span>
+</p>
+<ol>
+<li>
+<strong>Skill Intensity Gap:</strong>
+<span> 7 fewer skills per job (28.8 vs 36.0)</span>
+</li>
+<li>
+<strong>Technical Skills Gap:</strong>
+<span> 12% points lower than Singapore</span>
+</li>
+<li>
+<strong>AI/ML Gap:</strong>
+<span> Advanced AI skills virtually absent</span>
+</li>
+<li>
+<strong>Relationship Skills Strength:</strong>
+<span> CRM +28.6%, Customer Orientation +19.3% vs Singapore</span>
+</li>
+</ol>
+<p>
+<span>Findings are interpreted with caution given Myanmar's limited sample (n=36, 75% Business Development).</span>
+</p>
+<h4 id="6-1-3-findings-in-relation-to-existing-literature">
+<em><strong>6.1.3 Findings in Relation to Existing Literature</strong></em>
+</h4>
+<p>
+<strong>Confirmation of Universal Transferable</strong>
+<strong> Skills </strong>
+<strong>Importance:</strong>
+<span> The prominence of Communication, Collaboration, and Problem Solving aligns with WEF (2023) identification of cognitive and interpersonal skills as critical for future employment, reinforcing that soft skills represent universal foundation for digital economy work, as predicted by human capital theory.</span>
+</p>
+<p>
+<strong>Support for Skill-Biased Technological Change Theory:</strong>
+<span> Role-specific technical skill profiles (Python/SQL for Data, UX Design/Prototyping for Design, Product Roadmap for PM) exemplify non-routine cognitive tasks that Autor et al. (2003) identified as complementing technological capabilities. AI/ML skills emergence further illustrates ongoing skill evolution predicted by SBTC.</span>
+</p>
+<p>
+<strong>Extension of Regional Labor Market Research:</strong>
+<span> While Phaphuangwittayakul et al. (2018) demonstrated job advertisement analysis feasibility in Thailand, this study extends that work through cross-country comparison and systematic taxonomy validation.</span>
+</p>
+<p>
+<strong>Validation of LLM-Based Methodology:</strong>
+<span> Consistent with Thida (2023) and Johary et al. (2025), LLM-based extraction significantly outperformed rule-based methods (6.82× more skill mentions).</span>
+</p>
+<p>
+<strong>Gap in Myanmar Research:</strong>
+<span> The limited existing research (Wah, 2018; Thida, 2023) provided minimal cross-country benchmarking. This study offers the systematic comparison of Myanmar's digital economy skill demands against regional standards. </span>
+</p>
+<h4 id="6-1-4-unexpected-findings">
+<em><strong>6.1.4 Unexpected Findings</strong></em>
+</h4>
+<ol>
+<li>
+<strong>Thailand-Singapore Near-Identity:</strong>
+<span> 97.0% similarity was higher than anticipated. Given different development stages, some meaningful differentiation was expected. Digital economy roles may be more globally standardized than "market maturity" framework implies.</span>
+</li>
+<li>
+<strong>Data Role Pattern Reversal:</strong>
+<span> Thailand specified technical skills (Python, SQL) at higher rates than Singapore, counterintuitive finding possibly reflecting different posting conventions (Singapore employers assuming baseline competencies).</span>
+</li>
+<li>
+<strong>Myanmar's High Similarity Despite Gaps:</strong>
+<span> Overall structural similarity remained &gt;83% despite notable gaps. Fundamental role definitions have diffused even to early-stage digital economies, gaps appear in depth rather than kind.</span>
+</li>
+</ol>
+<h3 id="6-2-theoretical-implications">
+<strong>6.2 Theoretical Implications</strong>
+</h3>
+<p>
+<strong>Human Capital Theory:</strong>
+<span> Consistent demand for both foundation soft skills and role-specific technical skills supports the proposition that employer demands reflect genuine productivity requirements. However, the 20% skill intensity gap raises questions: do Myanmar roles truly require fewer skills, or do employers articulate requirements differently?</span>
+</p>
+<p>
+<strong>Skill-Biased Technological Change:</strong>
+<span> AI/ML skills emergence, particularly in Singapore,supports SBTC's ongoing validity. Near-absence of these skills in Myanmar suggests SBTC effects may be geographically uneven, with technology adoption and corresponding skill demands diffusing from developed to developing markets.</span>
+</p>
+<p>
+<strong>Labor Market Segmentation:</strong>
+<span> Rather than general economic development, factors such as multinational company presence, international recruitment practices, and professional community connectedness may better explain skill demand patterns. The high SG-TH similarity despite different development stages challenges the simple "market maturity" framework.</span>
+</p>
+<h3 id="6-3-practical-implications">
+<strong>6.3 Practical Implications</strong>
+</h3>
+<h4 id="6-3-1-for-workforce-development-programs">
+<em><strong>6.3.1 For Workforce Development Programs</strong></em>
+</h4>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Priority</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Skills</strong>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<strong>Rationale</strong>
+</p>
+</td>
+<tbody></tbody>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Essential</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Communication, Collaboration, Problem Solving</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Universal demand across all roles/markets</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Core</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Role-specific technical (Python/SQL, UX Design, Product Roadmap, Negotiation)</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Role-defining competencies</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Emerging</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Machine Learning, AI tool proficiency</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Growing demand, future-proofing</span>
+</p>
+</td>
+</tr>
+<tr>
+<td colspan="1" rowspan="1">
+<p>
+<span>Supplementary</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Domain knowledge</span>
+</p>
+</td>
+<td colspan="1" rowspan="1">
+<p>
+<span>Contextual application</span>
+</p>
+</td>
+</tr>
+</thead>
+</table></div>
+<p>
+<em>Table 6.1: Recommended Curriculum Components by Priority</em>
+</p>
+
+<p>
+<strong>Role-Specific Technical Tracks:</strong>
+</p>
+<ul>
+<li>
+<strong>Data Track:</strong>
+<span> Python, SQL, Data Visualization, Statistical Analysis</span>
+</li>
+<li>
+<strong>Product Track:</strong>
+<span> Product Roadmap Development, Agile Methodology, Stakeholder Management</span>
+</li>
+<li>
+<strong>Marketing Track:</strong>
+<span> Marketing Campaign Management, Social Media Management, Content Marketing</span>
+</li>
+<li>
+<strong>Design Track:</strong>
+<span> UX Design, Prototyping, User Research, Figma</span>
+</li>
+<li>
+<strong>Business Development Track:</strong>
+<span> Negotiation, CRM, Sales Strategy, Relationship Management</span>
+</li>
+</ul>
+<h4 id="6-3-2-for-regional-labor-mobility-initiatives">
+<em><strong>6.3.2 For Regional Labor Mobility Initiatives</strong></em>
+</h4>
+<p>
+<span>High SG-TH consistency (97%) provides an empirical foundation for regional skill recognition frameworks.</span>
+</p>
+<p>
+<strong>Skill Portability:</strong>
+<span> Workers with Singapore-aligned skills can expect relevance in Thailand, and vice versa.</span>
+</p>
+<p>
+<strong>Targeted Recognition:</strong>
+<span> For roles with high consistency (Business Development: 0.971, Digital Marketing: 0.958), accelerated mutual recognition may be feasible. For UI/UX Design (0.695), additional harmonization may be needed.</span>
+</p>
+<h4 id="6-3-3-for-individual-workers">
+<em><strong>6.3.3 For Individual Workers</strong></em>
+</h4>
+<ul>
+<li>
+<strong>Foundation first:</strong>
+<span> Communication, Collaboration, Problem Solving provide highest return across broadest opportunities</span>
+</li>
+<li>
+<strong>Regional alignment:</strong>
+<span> Skills developed for Singapore are largely transferable to Thailand</span>
+</li>
+<li>
+<strong>Technical differentiation:</strong>
+<span> Within roles, technical skills provide differentiation</span>
+</li>
+<li>
+<strong>AI readiness:</strong>
+<span> Develop familiarity with AI/ML concepts, likely to become more widely demanded</span>
+</li>
+</ul>
+<h4 id="6-3-4-for-myanmar-specific-development">
+<em><strong>6.3.4 For Myanmar-Specific Development</strong></em>
+</h4>
+<ul>
+<li>
+<strong>Business Development focus:</strong>
+<span> 75% of identified Myanmar digital jobs, prioritize this role</span>
+</li>
+<li>
+<strong>Emphasize CRM, Business Presentation, Communication</strong>
+<span> (where Myanmar shows strength)</span>
+</li>
+<li>
+<strong>Build technical capabilities</strong>
+<span> (Data Analysis, Negotiation) to close gaps for regional employability</span>
+</li>
+<li>
+<strong>Consider AI/ML leapfrogging</strong>
+<span>, </span>
+<span>position workers for emerging opportunities rather than competing in established categories</span>
+</li>
+</ul>
+<h4 id="6-3-5-for-taxonomy-and-framework-developers">
+<em><strong>6.3.5 For Taxonomy and Framework Developers</strong></em>
+</h4>
+<p>
+<strong>Regional Framework Value:</strong>
+<span> Singapore Skills Framework demonstrated higher mapping rates than O*NET for emerging tech roles. Regional frameworks may better capture Southeast Asian digital economy requirements.</span>
+</p>
+<p>
+<strong>Emerging Skill Integration:</strong>
+<span> AI/ML skills, A/B Testing, and Influencer Marketing as prominent non-taxonomy skills indicate areas where frameworks lag market reality.</span>
+</p>
+<p>
+<strong>Role Definition Clarity:</strong>
+<span> Product Management taxonomic challenges (dispersed across multiple O*NET categories) highlight the need for clearer classification of emerging roles.</span>
+</p>
+<h3 id="6-4-reflections">
+<strong>6.4 Reflections</strong>
+</h3>
+<h4 id="6-4-1-scope-adjustment">
+<em><strong>6.4.1 Scope Adjustment</strong></em>
+</h4>
+<p>
+<span>Original design envisioned balanced three-country comparison. Myanmar's limited data (36 vs 546/385) required reframing as exploratory. Analysis prioritized effect sizes over statistical significance given sample constraints.</span>
+</p>
+<p>
+<strong>Learning:</strong>
+<span> Conduct preliminary data availability assessments before finalizing research designs. Transparent acknowledgment of scope adjustments strengthens rather than weakens research credibility.</span>
+</p>
+<h4 id="6-4-2-iterative-role-mapping">
+<em><strong>6.4.2 Iterative Role Mapping</strong></em>
+</h4>
+<p>
+<span>Initial keyword classification included substantial contamination ("Project Manager" as "Product Manager"). Filtering evolved through iterations:</span>
+</p>
+<ol>
+<li>
+<span>Simple title keyword matching (high recall, low precision)</span>
+</li>
+<li>
+<span>Expanded exclusion lists based on manual review</span>
+</li>
+<li>
+<span>LLM-assisted confidence scoring with threshold filtering</span>
+</li>
+<li>
+<span>Final dataset: 967 high-confidence advertisements (29.8% retention)</span>
+</li>
+</ol>
+<p>
+<span>Product Management retention dropped to 23.5%, over three-quarters of initial classifications were inaccurate.</span>
+</p>
+<p>
+<strong>Learning:</strong>
+<span> Role classification in digital economy research cannot rely on simple keyword matching. Job titles are inconsistent, overlapping, and frequently misleading. Budget time for iterative refinement.</span>
+</p>
+<h4 id="6-4-3-methodology-restart">
+<em><strong>6.4.3 Methodology Restart</strong></em>
+</h4>
+<p>
+<span>Manual LLM extraction via prompt-based interaction revealed fundamental issues:</span>
+</p>
+<ul>
+<li>
+<strong>Data hallucination:</strong>
+<span> Skills not present in source text</span>
+</li>
+<li>
+<strong>No output persistence:</strong>
+<span> Impossible to track/verify</span>
+</li>
+<li>
+<strong>Verification impossibility:</strong>
+<span> No way to audit extraction process</span>
+</li>
+<li>
+<strong>Scalability failure:</strong>
+<span> Processing 967 advertisements manually impractical</span>
+</li>
+</ul>
+<p>
+<span>This necessitated complete restart with API-based extraction with structured JSON outputs. Prior validation was rendered invalid because it tested a fundamentally different approach.</span>
+</p>
+<p>
+<strong>Learning:</strong>
+<span> LLM research requires reproducibility infrastructure from outset, API-based pipelines with structured outputs before conducting methodology validation.</span>
+</p>
+<h4 id="6-4-4-broader-implications">
+<em><strong>6.4.4 Broader Implications</strong></em>
+</h4>
+<p>
+<span>The challenges encountered during this research-scope adjustments, classification refinement, and methodology restart-offer generalizable lessons for researchers conducting LLM-based skill extraction from job advertisements:</span>
+</p>
+<ol>
+<li>
+<span>Data reality should drive research design</span>
+</li>
+<li>
+<span>Classification requires iteration</span>
+</li>
+<li>
+<span>LLM validation is system-specific</span>
+</li>
+<li>
+<span>Transparency strengthens research</span>
+</li>
+</ol>
+<h3 id="6-5-limitations">
+<strong>6.5 Limitations</strong>
+</h3>
+<h4 id="6-5-1-sample-limitations">
+<em><strong>6.5.1 Sample Limitations</strong></em>
+</h4>
+<ol>
+<li>
+<strong>Myanmar Sample Size:</strong>
+<span> The most significant limitation is Myanmar's small sample (n=36, 75% Business Development), which prevents full three-stage comparison realization. Myanmar findings should be treated as exploratory hypotheses rather than generalizable conclusions.</span>
+</li>
+<li>
+<strong>Role Distribution Imbalance:</strong>
+<span> Myanmar's concentration in Business Development limits cross-role analysis. Conclusions about Data Analysts, Product Managers, and UI/UX Designers in Myanmar cannot be drawn from this dataset.</span>
+</li>
+</ol>
+<h4 id="6-5-2-data-source-limitations">
+<em><strong>6.5.2 Data Source Limitations</strong></em>
+</h4>
+<ol>
+<li>
+<strong>Platform Bias:</strong>
+<span> LinkedIn representation varies by market, may overrepresent multinational companies and English-language positions, underrepresenting local market realities.</span>
+</li>
+<li>
+<strong>Temporal Snapshot:</strong>
+<span> Cross-sectional design captures October 2025 demands only. Skill demands evolve; findings represent a specific moment.</span>
+</li>
+<li>
+<strong>Aspiration vs. Reality:</strong>
+<span> Job advertisements reflect employer aspirations, not actual hiring decisions or job performance requirements.</span>
+</li>
+</ol>
+<h4 id="6-5-3-methodological-limitations">
+<em><strong>6.5.3 Methodological Limitations</strong></em>
+</h4>
+<ol>
+<li>
+<strong>LLM Extraction Variability:</strong>
+<span> While Claude 3.5 Sonnet demonstrated high precision (94.2%), some extraction inconsistency remains. Different LLM versions or providers might yield different results.</span>
+</li>
+<li>
+<strong>Limited Model Comparison:</strong>
+<span> Only one LLM was used for final extraction. Systematic benchmarking across multiple providers would strengthen methodology.</span>
+</li>
+<li>
+<strong>No Per-Result Human Review:</strong>
+<span> Due to scale (40,000+ skill extractions), individual verification was impractical. Validation relied on sampling approaches.</span>
+</li>
+</ol>
+<h4 id="6-5-4-analytical-limitations">
+<em><strong>6.5.4 Analytical Limitations</strong></em>
+</h4>
+<ol>
+<li>
+<strong>Descriptive Nature:</strong>
+<span> This study cannot establish causal relationships between skill demands and labor market outcomes.</span>
+</li>
+<li>
+<strong>Effect Size Interpretation:</strong>
+<span> While Cohen's d effect sizes were calculated, small effects (d &lt; 0.3) may have limited practical significance despite statistical significance.</span>
+</li>
+</ol>
+<h3 id="6-6-future-research-recommendations">
+<strong>6.6 Future Research Recommendations</strong>
+</h3>
+<ol>
+<li>
+<strong>Expanded Myanmar data:</strong>
+<span> Multi-platform collection, extended periods, local partnerships, qualitative research with employers</span>
+</li>
+<li>
+<strong>Longitudinal analysis:</strong>
+<span> Track skill demand evolution, identify emerging skills before critical mass</span>
+</li>
+<li>
+<strong>Skill-outcome linkage:</strong>
+<span> Wage premiums for specific skills, employment outcomes</span>
+</li>
+<li>
+<strong>Expanded geography:</strong>
+<span> Additional ASEAN markets (Vietnam, Indonesia, Philippines)</span>
+</li>
+<li>
+<strong>LLM methodology:</strong>
+<span> Systematic benchmarking across providers, human-in-the-loop validation</span>
+</li>
+</ol>
+<h3 id="6-7-conclusion">
+<strong>6.7 Conclusion</strong>
+</h3>
+<p>
+<span>This study tested three hypotheses regarding digital economy skill demands across Southeast Asia. While H1 (market differentiation) was not supported revealing instead unexpected regional standardization both H2 (Myanmar skill gaps) and H3 (taxonomy adequacy) were confirmed. These findings challenge simplistic "market maturity" frameworks while providing actionable insights for workforce development.</span>
+</p>
+<p>
+<span>This study establishes that digital economy skill demands in Southeast Asia rest on </span>
+<strong>universal foundations</strong>
+<span> (Communication, Collaboration, Problem Solving). The </span>
+<strong>97.0% Singapore-Thailand similarity</strong>
+<span> provides evidence of regional standardization, supporting labor mobility initiatives and suggesting skills developed for one market transfer to another.</span>
+</p>
+<p>
+<strong>Myanmar's specific gaps</strong>
+<span>, </span>
+<span>20% lower skill intensity, 12-percentage-point technical skills underrepresentation, virtual absence of AI/ML competencies,represent focus areas for workforce development. However, fundamental role structures remain aligned with regional standards (&gt;83% similarity).</span>
+</p>
+<p>
+<span>The </span>
+<strong>methodological contribution</strong>
+<span> demonstrates LLM-based extraction's effectiveness (6.82× more skill mentions than rule-based methods). The </span>
+<strong>dual-taxonomy approach</strong>
+<span> reveals that regional frameworks (Singapore Skills Framework) better capture emerging digital economy roles than international standards (O*NET), particularly for Product Management (100% vs 40.9% alignment).</span>
+</p>
+<p>
+<span>Despite Myanmar sample constraints limiting full three-stage comparison, findings offer practical value for workforce development programs, labor mobility initiatives, individual workers, and taxonomy developers. In Southeast Asia's rapidly expanding digital economy,projected to reach $600 billion by 2030, understanding employer skill demands is essential for ensuring workforce development keeps pace with economic opportunity.</span>
+</p>
+<h2 id="references">
+<strong>References</strong>
+</h2>
+<ol>
+<li>
+<span>Acemoglu, D., &amp; Restrepo, P. (2018). The race between man and machine: Implications of technology for growth, factor shares, and employment. </span>
+<em>American Economic Review</em>
+<span>, 108(6), 1488-1542.</span>
+</li>
+<li>
+<span>Autor, D. H., Levy, F., &amp; Murnane, R. J. (2003). The skill content of recent technological change: An empirical exploration. </span>
+<em>Quarterly Journal of Economics</em>
+<span>, 118(4), 1279-1333.</span>
+</li>
+<li>
+<span>Becker, G. S. (1964). </span>
+<em>Human capital: A theoretical and empirical analysis, with special reference to education</em>
+<span>. University of Chicago Press.</span>
+</li>
+<li>
+<span>Cambodian Parliamentarians Institute for Asia. (2024). </span>
+<em>Economic impacts of COVID-19 in Southeast Asia</em>
+<span>.</span>
+</li>
+<li>
+<span>Davenport, T. H., &amp; Patil, D. J. (2012). Data scientist: The sexiest job of the 21st century. </span>
+<em>Harvard Business Review</em>
+<span>, 90(10), 70-76.</span>
+</li>
+<li>
+<span>Google, Temasek, &amp; Bain. (2023). </span>
+<em>e-Conomy SEA 2023</em>
+<span>. https://www.bain.com/insights/e-conomy-sea-2023/</span>
+</li>
+<li>
+<span>International Labour Organization. (2022). </span>
+<em>Myanmar: Employment and social trends 2022</em>
+<span>.</span>
+</li>
+<li>
+<span>International Organization for Migration. (2024). </span>
+<em>Flow monitoring survey: Thailand, December 2024</em>
+<span>.</span>
+</li>
+<li>
+<span>JAC Group. (2024). </span>
+<em>Market overview: Technology hiring in Southeast Asia remains strong despite global slowdown</em>
+<span>.</span>
+</li>
+<li>
+<span>Johary, A., et al. (2025). JobHop: A large-scale dataset for career trajectory extraction with LLM-based skill identification. </span>
+<em>EMNLP 2025</em>
+<span>.</span>
+</li>
+<li>
+<span>LinkedIn. (2023). </span>
+<em>Future of recruiting: Southeast Asia</em>
+<span>.</span>
+</li>
+<li>
+<span>McGuinness, S., Pouliakas, K., &amp; Redmond, P. (2017). </span>
+<em>Skills mismatch: Concepts, measurement and policy approaches</em>
+<span> (IZA Discussion Paper No. 10786).</span>
+</li>
+<li>
+<span>Ospino Hernandez, C. (2018). </span>
+<em>Comparing occupational classification systems: A systematic review and analysis</em>
+<span>. Inter-American Development Bank.</span>
+</li>
+<li>
+<span>Phaphuangwittayakul, A., et al. (2018). Analysis of skill demand in Thai labor market from online jobs recruitment websites. </span>
+<em>JCSSE 2018</em>
+<span>, 1-6.</span>
+</li>
+<li>
+<span>Radio Free Asia. (2024). Myanmar sees sharp drop in foreign investment after military coup.</span>
+</li>
+<li>
+<span>Schultz, T. W. (1961). Investment in human capital. </span>
+<em>American Economic Review</em>
+<span>, 51(1), 1-17.</span>
+</li>
+<li>
+<span>SkillsFuture Singapore. (2024). </span>
+<em>Skills Framework for Infocomm Technology</em>
+<span>.</span>
+</li>
+<li>
+<span>Thida, M. (2023). Automated analysis of job market demands using large language models. </span>
+<em>IJACSA</em>
+<span>, 14(8), 853-860.</span>
+</li>
+<li>
+<span>Wah, K. K. (2018). </span>
+<em>Employer preferences and the value of foreign work experience in Myanmar</em>
+<span>. Myanmar Centre for Economic and Social Development Working Paper.</span>
+</li>
+<li>
+<span>World Economic Forum. (2023). </span>
+<em>Future of Jobs Report 2023</em>
+<span>.</span>
+</li>
+<li>
+<span>Yulianti, T., &amp; Fitriansyah, T. (2024). Employment and skill development initiatives in the labor markets: The cases of Indonesia and Thailand. </span>
+<em>Southeast Asian Ministers of Education Organization Regional Centre</em>
+<span>.</span>
+</li>
+</ol>
+
+  </article>
 
   <footer>
-    <hr class="sep">
-    <p style="margin-top:24px">© 2025 Yamin Thazin Oo. Capstone thesis, supervised by Dr. Myo Thida.<br>
+    <hr>
+    <p>© 2025 Yamin Thazin Oo. Capstone thesis, supervised by Dr. Myo Thida.<br>
     Shared for open access. Please cite when referencing.</p>
   </footer>
 
