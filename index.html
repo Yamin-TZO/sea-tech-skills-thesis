@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mapping Tech Skill Demands Across Southeast Asia | Yamin Thazin Oo</title>
+
+<!-- SEO -->
+<meta name="description" content="An LLM-based analysis of 3,247 LinkedIn job advertisements across Singapore, Thailand, and Myanmar, comparing employer skill demands for five digital-economy roles. Capstone thesis by Yamin Thazin Oo (2025).">
+<meta name="author" content="Yamin Thazin Oo">
+<meta name="keywords" content="digital economy, skill demands, job advertisements, LLM extraction, Southeast Asia, workforce development, Singapore, Thailand, Myanmar">
+<link rel="canonical" href="https://yamin-tzo.github.io/sea-tech-skills-thesis/">
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mapping Tech Skill Demands Across Southeast Asia">
+<meta property="og:description" content="An LLM-based analysis of tech job advertisements in Singapore, Thailand, and Myanmar. Capstone thesis, 2025.">
+<meta property="og:url" content="https://yamin-tzo.github.io/sea-tech-skills-thesis/">
+<meta name="twitter:card" content="summary">
+
+<!-- Highwire / Google Scholar citation metadata -->
+<meta name="citation_title" content="Mapping Tech Skill Demands Across Southeast Asia: An LLM-Based Analysis of Job Advertisements in Singapore, Thailand, and Myanmar">
+<meta name="citation_author" content="Oo, Yamin Thazin">
+<meta name="citation_publication_date" content="2025/12">
+<meta name="citation_pdf_url" content="https://yamin-tzo.github.io/sea-tech-skills-thesis/Mapping-Tech-Skill-Demands-Across-SEA.pdf">
+<meta name="citation_abstract_html_url" content="https://yamin-tzo.github.io/sea-tech-skills-thesis/">
+<meta name="citation_keywords" content="digital economy; skill demands; LLM extraction; Southeast Asia; workforce development">
+<meta name="citation_language" content="en">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>">
+
+<style>
+  :root{
+    --bg:#f7f8fa; --panel:#ffffff; --ink:#1a1f2b; --muted:#5a6473;
+    --line:#e5e8ee; --accent:#2f5bd0; --accent-ink:#ffffff; --tag-bg:#eef2fb; --tag-ink:#2f5bd0;
+    --shadow:0 1px 2px rgba(16,24,40,.04),0 8px 24px rgba(16,24,40,.06);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#0e1117; --panel:#161b22; --ink:#e6edf3; --muted:#9aa4b2;
+      --line:#272e39; --accent:#6f9bff; --accent-ink:#0e1117; --tag-bg:#1b2333; --tag-ink:#9cc0ff;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent)}
+  .wrap{max-width:860px; margin:0 auto; padding:clamp(20px,5vw,56px) clamp(16px,4vw,32px)}
+
+  /* Header */
+  .eyebrow{font-size:.8rem; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 12px}
+  h1{font-size:clamp(1.6rem,4.4vw,2.5rem); line-height:1.18; margin:0 0 18px; letter-spacing:-.01em; font-weight:700}
+  .byline{color:var(--muted); font-size:.98rem; margin:0 0 4px}
+  .byline strong{color:var(--ink); font-weight:600}
+  .meta-grid{display:flex; flex-wrap:wrap; gap:8px 22px; margin:18px 0 4px; color:var(--muted); font-size:.9rem}
+  .meta-grid span strong{color:var(--ink); font-weight:600}
+
+  /* Buttons */
+  .actions{display:flex; flex-wrap:wrap; gap:12px; margin:28px 0 8px}
+  .btn{
+    display:inline-flex; align-items:center; gap:9px; padding:12px 20px; border-radius:10px;
+    font-weight:600; font-size:.95rem; text-decoration:none; border:1px solid var(--line); cursor:pointer;
+    transition:transform .06s ease, box-shadow .15s ease, background .15s ease;
+  }
+  .btn:active{transform:translateY(1px)}
+  .btn-primary{background:var(--accent); color:var(--accent-ink); border-color:transparent; box-shadow:var(--shadow)}
+  .btn-ghost{background:var(--panel); color:var(--ink)}
+  .btn svg{width:18px;height:18px}
+
+  /* Cards */
+  section.card{
+    background:var(--panel); border:1px solid var(--line); border-radius:14px;
+    padding:clamp(20px,3.5vw,32px); margin:26px 0; box-shadow:var(--shadow);
+  }
+  h2{font-size:1.15rem; margin:0 0 14px; letter-spacing:-.01em}
+  .abstract p{margin:0 0 14px}
+  .abstract p:last-child{margin-bottom:0}
+
+  .tags{display:flex; flex-wrap:wrap; gap:8px; margin-top:6px}
+  .tag{background:var(--tag-bg); color:var(--tag-ink); font-size:.82rem; padding:5px 11px; border-radius:999px; font-weight:500}
+
+  /* TOC */
+  .toc{columns:2; column-gap:36px}
+  @media (max-width:620px){ .toc{columns:1} }
+  .toc ol{list-style:none; margin:0; padding:0; break-inside:avoid}
+  .toc li{margin:0 0 7px; font-size:.92rem; break-inside:avoid}
+  .toc .chap{font-weight:600; margin-top:14px}
+  .toc .chap:first-child{margin-top:0}
+  .toc .sub{padding-left:16px; color:var(--muted)}
+
+  /* PDF viewer */
+  .viewer{border:1px solid var(--line); border-radius:14px; overflow:hidden; box-shadow:var(--shadow); background:var(--panel)}
+  .viewer iframe{display:block; width:100%; height:82vh; min-height:520px; border:0; background:#f0f0f0}
+  .viewer-note{font-size:.85rem; color:var(--muted); margin:12px 2px 0; text-align:center}
+
+  footer{color:var(--muted); font-size:.85rem; text-align:center; margin:40px 0 8px; line-height:1.7}
+  hr.sep{border:0; border-top:1px solid var(--line); margin:8px 0 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <p class="eyebrow">Capstone Research Thesis · 2025</p>
+    <h1>Mapping Tech Skill Demands Across Southeast Asia</h1>
+    <p class="byline" style="font-size:1.05rem; color:var(--ink)">An LLM-Based Analysis of Job Advertisements in Singapore, Thailand, and Myanmar</p>
+    <div class="meta-grid">
+      <span><strong>Author:</strong> Yamin Thazin Oo</span>
+      <span><strong>Supervisor:</strong> Dr. Myo Thida</span>
+      <span><strong>Submitted:</strong> December 2025</span>
+      <span><strong>ID:</strong> CAP25_01_2371</span>
+    </div>
+
+    <div class="actions">
+      <a class="btn btn-primary" href="Mapping-Tech-Skill-Demands-Across-SEA.pdf" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download PDF (62 pp, 2.1 MB)
+      </a>
+      <a class="btn btn-ghost" href="Mapping-Tech-Skill-Demands-Across-SEA.pdf" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Open in new tab
+      </a>
+    </div>
+  </header>
+
+  <section class="card abstract">
+    <h2>Abstract</h2>
+    <p>This study examines skill demands across Southeast Asian tech labor markets at varying stages of digital economy maturity. Collecting 3,247 job advertisements from LinkedIn across Singapore (mature), Thailand (emerging), and Myanmar (developing), the research employs LLM-based skill extraction and analyzes a high-confidence filtered sample of 967 job advertisements to compare employer requirements for five digital economy roles: Product Management, UI/UX Design, Data Analysis/Science, Business Development, and Digital Marketing.</p>
+    <p>Findings reveal high regional consistency (97% similarity between Singapore and Thailand), with Myanmar showing meaningful but lower alignment (84% with Singapore). While core skill demands are fundamentally similar across markets, Myanmar exhibits 20% lower skill intensity per job and significant gaps in emerging AI/ML competencies. The study contributes a validated dual-taxonomy approach combining O*NET and the Singapore Skills Framework, demonstrating that regional taxonomies better capture emerging tech roles than legacy international standards. Results inform workforce development initiatives and regional skills recognition frameworks for emerging digital economies.</p>
+    <h2 style="margin-top:24px">Keywords</h2>
+    <div class="tags">
+      <span class="tag">digital economy</span>
+      <span class="tag">skill demands</span>
+      <span class="tag">job advertisements</span>
+      <span class="tag">LLM extraction</span>
+      <span class="tag">Southeast Asia</span>
+      <span class="tag">workforce development</span>
+      <span class="tag">Singapore</span>
+      <span class="tag">Thailand</span>
+      <span class="tag">Myanmar</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Table of Contents</h2>
+    <div class="toc">
+      <ol>
+        <li class="chap">1 · Introduction</li>
+        <li class="sub">Background · Problem · Rationale · Aims &amp; Questions · Hypotheses · Scope · Significance</li>
+        <li class="chap">2 · Literature Review</li>
+        <li class="sub">Digital economy &amp; tech competencies · Methodological approaches · SEA labor markets · Research gap</li>
+        <li class="chap">3 · Theoretical &amp; Conceptual Framework</li>
+        <li class="sub">Skill demand formation model · Dual-taxonomy approach · Cross-market comparison</li>
+        <li class="chap">4 · Research Methodology</li>
+        <li class="sub">Design · Data collection · Processing pipeline · Role classification · Skill extraction · QA · Ethics</li>
+        <li class="chap">5 · Data Presentation &amp; Analysis</li>
+        <li class="sub">Cross-market skill demands · Myanmar skill gaps · Taxonomy validation · Emerging skills</li>
+        <li class="chap">6 · Discussion &amp; Conclusion</li>
+        <li class="sub">Hypothesis evaluation · Theoretical &amp; practical implications · Limitations · Future research</li>
+        <li class="chap">References</li>
+        <li class="chap">Appendix: 17 Tables · 12 Figures</li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2 style="margin-left:2px">Read the full thesis</h2>
+    <div class="viewer">
+      <iframe src="Mapping-Tech-Skill-Demands-Across-SEA.pdf#view=FitH" title="Full thesis PDF" loading="lazy"></iframe>
+    </div>
+    <p class="viewer-note">If the embedded viewer doesn't load on your device (common on mobile), use <strong>Download PDF</strong> or <strong>Open in new tab</strong> above.</p>
+  </section>
+
+  <footer>
+    <hr class="sep">
+    <p style="margin-top:24px">© 2025 Yamin Thazin Oo. Capstone thesis, supervised by Dr. Myo Thida.<br>
+    Shared for open access. Please cite when referencing.</p>
+  </footer>
+
+</div>
+</body>
+</html>
